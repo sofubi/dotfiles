@@ -1,0 +1,9 @@
+[submodule ".config/suckless/dwm"]
+	path = .config/suckless/dwm
+	url = git@github.com:sofubi/dwm-fork.git
+[submodule ".zprezto"]
+	path = .zprezto
+	url = git@github.com:sofubi/prezto.git
+[submodule "/home/sofubi/keyboards/qmk_firmware"]
+	path = /home/sofubi/keyboards/qmk_firmware
+	url = git@github.com:sofubi/qmk_firmware.git
