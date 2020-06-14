@@ -47,7 +47,7 @@ export QT_STYLE_OVERRIDE=gtk
 /usr/bin/dunst > /dev/null 2>&1 &
 
 # compositor
-/usr/bin/picom -b --experimental-backends
+/usr/bin/picom -b
 
 # monitor layout
 /home/sofubi/.screenlayout/default.sh
@@ -58,7 +58,7 @@ export QT_STYLE_OVERRIDE=gtk
 # redshift
 /usr/bin/redshift &
 
-# start session
-while true; do 
-  dwm 2> ~/.dwm.log
+# dbus exec w/ wm
+while true; do
+	dbus-launch --sh-syntax --exit-with-session dwm 2> /dev/null
 done
