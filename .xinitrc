@@ -58,7 +58,8 @@ export QT_STYLE_OVERRIDE=gtk
 # redshift
 /usr/bin/redshift &
 
+# pulseaudio
+pulseaudio --start &
+
 # dbus exec w/ wm
-while true; do
-	dbus-launch --sh-syntax --exit-with-session dwm 2> /dev/null
-done
+exec dbus-launch --sh-syntax --exit-with-x11 dwm

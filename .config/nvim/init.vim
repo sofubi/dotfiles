@@ -50,7 +50,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vim-clap'
 Plug 'APZelos/blamer.nvim'
 
 call plug#end()
