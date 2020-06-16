@@ -135,4 +135,4 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:blamer_prefix=' > '
 let g:blamer_enabled=1
 let g:blamer_delay=500
-let g:blamer_date_format='%m%d%y %H:%M'
+let g:blamer_date_format='%m/%d/%y %H:%M'

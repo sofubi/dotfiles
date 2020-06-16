@@ -47,7 +47,7 @@ export QT_STYLE_OVERRIDE=gtk
 /usr/bin/dunst > /dev/null 2>&1 &
 
 # compositor
-/usr/bin/picom -b
+/usr/bin/picom --experimental-backends -b
 
 # monitor layout
 /home/sofubi/.screenlayout/default.sh
@@ -58,8 +58,14 @@ export QT_STYLE_OVERRIDE=gtk
 # redshift
 /usr/bin/redshift &
 
-# pulseaudio
-pulseaudio --start &
+# status
+while true; do
+	xsetroot -name "$( date +"%F %R" )"
+	sleep 1m 
+done &
 
-# dbus exec w/ wm
-exec dbus-launch --sh-syntax --exit-with-x11 dwm
+# screenlock
+xautolock -time 10 -locker "betterlockscreen -l blur --off 3" -nowlocker "betterlockscreen -l blur --off 3" -detectsleep -corners 000+ -cornerdelay 3 &
+
+# exec wm
+exec dwm
