@@ -1,6 +1,7 @@
 " basic settings
 syntax on "set file syntax to on
 let mapleader = "\<space>" 
+set noshowmode "let lightline show the mode
 set nobackup "for coc.nvim
 set nowritebackup "for coc.nvim
 set bufhidden=hide "suspend closed buffers
@@ -42,16 +43,17 @@ set mouse=a "mice
 "plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'jiangmiao/auto-pairs'
+Plug 'unblevable/quick-scope' "movement reminders
+Plug 'itchyny/lightline.vim' "statusline
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "lsp
+Plug 'tpope/vim-commentary' "easy comments
+Plug 'tpope/vim-surround' "surround motion
+Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
-Plug 'liuchengxu/vim-clap'
-Plug 'APZelos/blamer.nvim'
+Plug 'liuchengxu/vim-clap' "get around files
+Plug 'APZelos/blamer.nvim' "git blame per line
 
 call plug#end()
 
@@ -65,18 +67,13 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <esc> :nohlsearch<CR>
 nnoremap <Leader>so :so ~/.config/nvim/init.vim<CR>
 
-" netrw
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_browse_split=1
-let g:netrw_winsize=25
-
 " clap
 nnoremap <Leader>p :Clap files<CR>
 nnoremap <Leader>ln :Clap lines<CR>
 nnoremap <Leader>y :Clap yanks<CR>
 nnoremap <Leader>g :Clap grep2<CR>
 nnoremap <Leader>f :Clap filer<CR>
+let g:clap_theme='dogrun'
 
 " coc
 " use <tab> for trigger completion and navigate to the next complete item
@@ -99,6 +96,33 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+" show explorer
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\      'root-uri': '~/.vim',
+\   },
+\   'floating': {
+\      'position': 'floating',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\   },
+\   'floatingLeftside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 50,
+\   },
+\   'floatingRightside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 50,
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+nmap <silent> <leader>e :CocCommand explorer --preset floating<CR>
 " go to def
 nmap <silent> gd <Plug>(coc-definition)
 " show docs
@@ -115,20 +139,17 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader><leader>d  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <leader><leader>e  :<C-u>CocList extensions<cr>
+" Show actions for current line.
+nnoremap <silent><nowait> <leader><leader>a  :<C-u>CocList actions<cr>
 " Show commands.
 nnoremap <silent><nowait> <leader><leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader><leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <leader><leader>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <leader><leader>n  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <leader><leader>p  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><leader>r  :<C-u>CocListResume<CR>
+
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " blamer
@@ -136,3 +157,22 @@ let g:blamer_prefix=' > '
 let g:blamer_enabled=1
 let g:blamer_delay=500
 let g:blamer_date_format='%m/%d/%y %H:%M'
+
+" lightline
+
+function! CocCurrentFunction()
+	return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+	\ 'colorscheme': 'dogrun',
+	\ 'active': {
+	\	'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead',
+	\   'cocstatus': 'coc#status',
+	\   'currentfunction': 'CocCurrentFunction'
+	\ },
+	\}
