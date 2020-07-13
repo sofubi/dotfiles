@@ -245,7 +245,7 @@ visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
 ##   available.
 ##
 #
-song_columns_list_format = (6f)[]{l} (60)[green]{t|f:Title} (20)[white]{ar|f:Artist} (20)[cyan]{br}
+#song_columns_list_format = (6f)[]{l} (60)[green]{t|f:Title} (20)[white]{ar|f:Artist} (20)[cyan]{br}
 #
 ##### various settings #####
 #
@@ -253,7 +253,7 @@ song_columns_list_format = (6f)[]{l} (60)[green]{t|f:Title} (20)[white]{ar|f:Art
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-execute_on_song_change = dunstify "Now Playing" "$(mpc --format '%title' \n%artist% \- %album%' current)"
+execute_on_song_change = dunstify "Now Playing" "$(mpc --format '%title% \n%artist% \- %album%' current)"
 #
 ##
 ## Note: Custom command that will be executed each time player state

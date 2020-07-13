@@ -56,7 +56,7 @@ export QT_STYLE_OVERRIDE=gtk
 /usr/bin/wal -R
 
 # redshift
-/usr/bin/redshift &
+/sbin/redshift &
 
 # status
 while true; do

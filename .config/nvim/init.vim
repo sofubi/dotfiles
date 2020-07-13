@@ -43,6 +43,7 @@ set mouse=a "mice
 "plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'honza/vim-snippets' "snippets
 Plug 'unblevable/quick-scope' "movement reminders
 Plug 'itchyny/lightline.vim' "statusline
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "lsp
@@ -52,12 +53,13 @@ Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
+Plug 'chuling/equinusocio-material.vim' "colorscheme
 Plug 'liuchengxu/vim-clap' "get around files
 Plug 'APZelos/blamer.nvim' "git blame per line
 
 call plug#end()
 
-colorscheme dogrun
+colorscheme equinusocio_material
 
 " keybinds
 nnoremap <leader>h :wincmd h<CR>
@@ -153,10 +155,10 @@ nnoremap <silent><nowait> <leader><leader>r  :<C-u>CocListResume<CR>
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " blamer
-let g:blamer_prefix=' > '
-let g:blamer_enabled=1
-let g:blamer_delay=500
-let g:blamer_date_format='%m/%d/%y %H:%M'
+let g:blamer_prefix = ' > '
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_date_format = '%m/%d/%y %H:%M'
 
 " lightline
 
@@ -165,7 +167,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-	\ 'colorscheme': 'dogrun',
+	\ 'colorscheme': 'equinusocio_material',
 	\ 'active': {
 	\	'left': [ [ 'mode', 'paste' ],
 	\             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
@@ -176,3 +178,7 @@ let g:lightline = {
 	\   'currentfunction': 'CocCurrentFunction'
 	\ },
 	\}
+
+"equinusocio
+
+let g:equinusocio_material_style = 'pure'
