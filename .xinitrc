@@ -58,6 +58,9 @@ export QT_STYLE_OVERRIDE=gtk
 # redshift
 /sbin/redshift &
 
+# flameshot
+/usr/bin/flameshot &
+
 # status
 while true; do
 	xsetroot -name "$( date +"%F %R" )"
@@ -65,7 +68,7 @@ while true; do
 done &
 
 # screenlock
-xautolock -time 10 -locker "betterlockscreen -l blur --off 3" -nowlocker "betterlockscreen -l blur --off 3" -detectsleep -corners 000+ -cornerdelay 3 &
+xautolock -time 10 -locker "betterlockscreen -l blur --off 3" -nowlocker "betterlockscreen -l blur --off 3" &
 
 # exec wm
 exec dwm

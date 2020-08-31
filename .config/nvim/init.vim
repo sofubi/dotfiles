@@ -34,6 +34,7 @@ set noswapfile "do not use swap when losing a file
 set tabstop=4 "set tabs to 4 spaces
 set termguicolors "use 256 colors
 set timeoutlen=6000
+set undodir=~/.vim/undo-dir
 set undofile "use an undofile
 set undolevels=5000 "bigger undofile
 set updatetime=50 "set lower update time for faster response
@@ -53,28 +54,30 @@ Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
-Plug 'chuling/equinusocio-material.vim' "colorscheme
 Plug 'liuchengxu/vim-clap' "get around files
 Plug 'APZelos/blamer.nvim' "git blame per line
+Plug 'Yggdroot/indentLine' "show indent lines
 
 call plug#end()
 
-colorscheme equinusocio_material
+colorscheme dogrun
 
 " keybinds
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
+nnoremap <c-h> :wincmd h<CR>
+nnoremap <c-j> :wincmd j<CR>
+nnoremap <c-k> :wincmd k<CR>
+nnoremap <c-l> :wincmd l<CR>
 nnoremap <esc> :nohlsearch<CR>
 nnoremap <Leader>so :so ~/.config/nvim/init.vim<CR>
 
 " clap
-nnoremap <Leader>p :Clap files<CR>
-nnoremap <Leader>ln :Clap lines<CR>
+nnoremap <Leader>p :Clap!! files<CR>
+nnoremap <Leader>ln :Clap!! lines<CR>
 nnoremap <Leader>y :Clap yanks<CR>
-nnoremap <Leader>g :Clap grep2<CR>
-nnoremap <Leader>f :Clap filer<CR>
+nnoremap <Leader>g :Clap!! grep2<CR>
+nnoremap <Leader>f :Clap!! filer<CR>
+nnoremap <Leader>gg :Clap!! git_diff_files<CR>
+nnoremap <Leader>j :Clap!! jumps<CR>
 let g:clap_theme='dogrun'
 
 " coc
@@ -155,10 +158,10 @@ nnoremap <silent><nowait> <leader><leader>r  :<C-u>CocListResume<CR>
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " blamer
-let g:blamer_prefix = ' > '
-let g:blamer_enabled = 1
-let g:blamer_delay = 500
-let g:blamer_date_format = '%m/%d/%y %H:%M'
+let g:blamer_prefix=' > '
+let g:blamer_enabled=1
+let g:blamer_delay=500
+let g:blamer_date_format='%m/%d/%y %H:%M'
 
 " lightline
 
@@ -167,7 +170,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-	\ 'colorscheme': 'equinusocio_material',
+	\ 'colorscheme': 'dogrun',
 	\ 'active': {
 	\	'left': [ [ 'mode', 'paste' ],
 	\             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
@@ -178,7 +181,3 @@ let g:lightline = {
 	\   'currentfunction': 'CocCurrentFunction'
 	\ },
 	\}
-
-"equinusocio
-
-let g:equinusocio_material_style = 'pure'

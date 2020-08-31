@@ -1,0 +1,14 @@
+{
+	"intelephense.licenceKey": "00FIDII9O1J33I1",
+	"emmet.includeLanguages": {
+		"vue-html": "html",
+		"vue": "html",
+		"blade": "html",
+		"jinja": "html"
+	},
+	"emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
+	"snippets.extends": {
+		"liquid": ["html"]
+	}
+}
