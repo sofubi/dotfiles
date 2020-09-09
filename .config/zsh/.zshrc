@@ -42,6 +42,9 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
     bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
+# fzf defaults
+export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --color auto'
+
 # fzf on ctrl-f
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 

@@ -4,6 +4,7 @@
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # Default programs:
+export VISUAL="nvim"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"

@@ -1,5 +1,7 @@
 " basic settings
 syntax on "set file syntax to on
+set expandtab "enter spaces when tab is pressed
+set autoindent "copy indent from current line when starting new line
 let mapleader = "\<space>" 
 set noshowmode "let lightline show the mode
 set nobackup "for coc.nvim
@@ -58,7 +60,7 @@ Plug 'junegunn/fzf.vim' "ctrlp and others
 Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
 Plug 'dyng/ctrlsf.vim' "search and replace
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree' "undotree
 
 call plug#end()
 
@@ -69,22 +71,31 @@ let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
 let g:node_host_prog = expand('~/.config/nvm/versions/node/v12.18.3/bin/neovim-node-host')
 .
 " keybinds
+nnoremap <esc> :nohl<CR>
 nnoremap <c-h> :wincmd h<CR>
 nnoremap <c-j> :wincmd j<CR>
 nnoremap <c-k> :wincmd k<CR>
 nnoremap <c-l> :wincmd l<CR>
-nnoremap <esc> :nohlsearch<CR>
+nnoremap <A-h> :tabp<cr>
+nnoremap <A-l> :tabn<cr>
+nnoremap <A-c> :tabclose<cr>
+nnoremap <Leader><Leader>t :tabe term://.//zsh<cr>
 nnoremap <Leader>so :so ~/.config/nvim/init.vim<CR>
-tnoremap <Esc> <C-\><C-n>
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
 
-" clap
-nnoremap <Leader>p :Clap!! files<CR>
-nnoremap <Leader>ln :Clap!! lines<CR>
-nnoremap <Leader>y :Clap yanks<CR>
-nnoremap <Leader>g :Clap!! grep2<CR>
-nnoremap <Leader>f :Clap!! filer<CR>
-nnoremap <Leader>gg :Clap!! git_diff_files<CR>
-nnoremap <Leader>j :Clap!! jumps<CR>
+" fzf
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+nnoremap <Leader>p :GFiles<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>w :Rg <C-R><C-W><space><CR>
 let g:clap_theme='dogrun'
 
 " coc
@@ -161,8 +172,6 @@ nnoremap <silent><nowait> <leader><leader>o  :<C-u>CocList outline<cr>
 nnoremap <silent><nowait> <leader><leader>s  :<C-u>CocList -I symbols<cr>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><leader>r  :<C-u>CocListResume<CR>
-" Toggle terminal
-nmap <leader><leader>t  <Plug>(coc-terminal-toggle)
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
