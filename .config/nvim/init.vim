@@ -54,14 +54,20 @@ Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
-Plug 'liuchengxu/vim-clap' "get around files
+Plug 'junegunn/fzf.vim' "ctrlp and others
 Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
+Plug 'dyng/ctrlsf.vim' "search and replace
+Plug 'mbbill/undotree'
 
 call plug#end()
 
 colorscheme dogrun
 
+let g:python_host_prog = '/home/sofubi/.virtualenvs/nvim2/bin/python2'
+let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
+let g:node_host_prog = expand('~/.config/nvm/versions/node/v12.18.3/bin/neovim-node-host')
+.
 " keybinds
 nnoremap <c-h> :wincmd h<CR>
 nnoremap <c-j> :wincmd j<CR>
@@ -69,6 +75,7 @@ nnoremap <c-k> :wincmd k<CR>
 nnoremap <c-l> :wincmd l<CR>
 nnoremap <esc> :nohlsearch<CR>
 nnoremap <Leader>so :so ~/.config/nvim/init.vim<CR>
+tnoremap <Esc> <C-\><C-n>
 
 " clap
 nnoremap <Leader>p :Clap!! files<CR>
@@ -154,12 +161,13 @@ nnoremap <silent><nowait> <leader><leader>o  :<C-u>CocList outline<cr>
 nnoremap <silent><nowait> <leader><leader>s  :<C-u>CocList -I symbols<cr>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><leader>r  :<C-u>CocListResume<CR>
+" Toggle terminal
+nmap <leader><leader>t  <Plug>(coc-terminal-toggle)
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " blamer
 let g:blamer_prefix=' > '
-let g:blamer_enabled=1
 let g:blamer_delay=500
 let g:blamer_date_format='%m/%d/%y %H:%M'
 
@@ -181,3 +189,6 @@ let g:lightline = {
 	\   'currentfunction': 'CocCurrentFunction'
 	\ },
 	\}
+
+"ctrlsf
+let g:ctrlsf_auto_preview = 1

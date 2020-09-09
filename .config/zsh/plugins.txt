@@ -1,0 +1,9 @@
+denysdovhan/spaceship-prompt
+djui/alias-tips
+zsh-users/zsh-autosuggestions
+zuxfoucault/colored-man-pages_mod
+lukechilds/zsh-nvm
+kazhala/dotbare
+
+# this goes last
+zsh-users/zsh-syntax-highlighting

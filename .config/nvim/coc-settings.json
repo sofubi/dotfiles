@@ -10,5 +10,6 @@
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"snippets.extends": {
 		"liquid": ["html"]
-	}
+	},
+	"python.venvPath": "~/.virtualenvs"
 }
