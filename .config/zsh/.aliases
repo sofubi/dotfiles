@@ -11,15 +11,15 @@ alias mkdir='mkdir -pv'
 alias rm='rm -I --preserve-root'
 
 # reset some defaults
-alias cat=bat
+alias cat='bat '
 alias ls='exa '
 alias la='exa -la'
 alias tree='exa -Ta --level=3'
 
 # editor
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
+alias v='nvim '
+alias vi='nvim '
+alias vim='nvim '
 
 # bare git
 alias dotfiles="dotbare"

@@ -56,6 +56,7 @@ Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
 Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
+Plug 'tomasiser/vim-code-dark' "colorscheme
 Plug 'junegunn/fzf.vim' "ctrlp and others
 Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
@@ -64,7 +65,7 @@ Plug 'mbbill/undotree' "undotree
 
 call plug#end()
 
-colorscheme dogrun
+colorscheme codedark
 
 let g:python_host_prog = '/home/sofubi/.virtualenvs/nvim2/bin/python2'
 let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
@@ -88,6 +89,8 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <A-j> :m .+1<CR>==
+vnoremap > >gv
+vnoremap < <gv
 
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -187,7 +190,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-	\ 'colorscheme': 'dogrun',
+	\ 'colorscheme': 'deus',
 	\ 'active': {
 	\	'left': [ [ 'mode', 'paste' ],
 	\             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
