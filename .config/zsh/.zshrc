@@ -1,5 +1,7 @@
 # set wal colors
-(cat ~/.cache/wal/sequences &)
+if [[ "$(hostname)" == "kyoto" ]]; then
+    (cat ~/.cache/wal/sequences &)
+fi
 
 # History in cache directory:
 HISTSIZE=1000
@@ -51,14 +53,24 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 # Set aliases
 source $HOME/.config/zsh/.aliases
 
+if [[ "$(hostname)" != "kyoto" ]]; then
+    # npm-config-prefix
+    export PATH=~/.npm-global/bin:$PATH
+    
+    # cargo on path
+    export PATH=~/.cargo/bin:$PATH
+fi
+
 # zsh-nvm opts
 export NVM_DIR="$HOME/.config/nvm"
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
-# manage dots
-export DOTBARE_DIR="$HOME/.dotfiles.git/"
-export DOTBARE_TREE="$HOME"
+if [[ "$(hostname)" == "kyoto" ]] then;
+    # manage dots
+    export DOTBARE_DIR="$HOME/.dotfiles.git/"
+    export DOTBARE_TREE="$HOME"
+fi
 
 # Init and bundle antibody
 source <(antibody init)
