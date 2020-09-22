@@ -82,3 +82,6 @@ antibody bundle < ~/.config/zsh/plugins.txt
 
 # Spaceship prompt opts
 eval spaceship_vi_mode_enable
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
