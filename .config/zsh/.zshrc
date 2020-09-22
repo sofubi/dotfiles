@@ -47,9 +47,6 @@ fi
 # fzf defaults
 export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --color auto'
 
-# fzf on ctrl-f
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-
 # Set aliases
 source $HOME/.config/zsh/.aliases
 
@@ -57,9 +54,16 @@ if [[ "$(hostname)" != "kyoto" ]]; then
     # npm-config-prefix
     export PATH=~/.npm-global/bin:$PATH
     
-    # cargo on path
-    export PATH=~/.cargo/bin:$PATH
 fi
+
+# composer
+export PATH=~/.config/composer/vendor/bin:$PATH
+
+# scripts
+export PATH=~/bin:$PATH
+
+# cargo on path
+export PATH=~/.cargo/bin:$PATH
 
 # zsh-nvm opts
 export NVM_DIR="$HOME/.config/nvm"

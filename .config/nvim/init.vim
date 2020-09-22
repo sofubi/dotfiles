@@ -42,6 +42,7 @@ set undolevels=5000 "bigger undofile
 set updatetime=50 "set lower update time for faster response
 set signcolumn=yes "merge signcolumn and numbercolumn into one
 set mouse=a "mice
+filetype plugin on
 
 "plugins
 call plug#begin('~/.vim/plugged')
@@ -62,7 +63,7 @@ Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
 Plug 'dyng/ctrlsf.vim' "search and replace
 Plug 'mbbill/undotree' "undotree
-
+Plug 'dbeniamine/todo.txt-vim' "todo.txt
 call plug#end()
 
 colorscheme codedark
@@ -204,3 +205,16 @@ let g:lightline = {
 
 "ctrlsf
 let g:ctrlsf_auto_preview = 1
+
+"todo.txt
+" Use todo#Complete as the omni complete function for todo files
+au filetype todo setlocal omnifunc=todo#Complete
+
+" Auto complete projects
+au filetype todo imap <buffer> + +<C-X><C-O>
+
+" Auto complete contexts
+au filetype todo imap <buffer> @ @<C-X><C-O>
+
+" completion menu with one item
+au filetype todo setlocal completeopt+=menuone
