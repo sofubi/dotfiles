@@ -10,13 +10,12 @@ alias fgrep='fgrep --color=auto'
 alias mkdir='mkdir -pv'
 alias rm='rm -I --preserve-root'
 
-if [[ "$(hostname)" == "kyoto" ]]; then
-    # reset some defaults
-    alias cat='bat '
-    alias ls='exa '
-    alias la='exa -la'
-    alias tree='exa -Ta --level=3'
-fi
+# reset some defaults
+alias cat='bat '
+alias ls='exa '
+alias la='exa -la'
+alias tree='exa -Ta --level=3'
+alias python='python3'
 
 # editor
 alias v='nvim '

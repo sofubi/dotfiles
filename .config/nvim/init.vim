@@ -58,6 +58,7 @@ Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
 Plug 'tomasiser/vim-code-dark' "colorscheme
+Plug 'junegunn/fzf' "ctrlp and others
 Plug 'junegunn/fzf.vim' "ctrlp and others
 Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
@@ -71,11 +72,12 @@ Plug 'junegunn/limelight.vim' "zen
 call plug#end()
 
 colorscheme codedark
+let g:clap_theme='dogrun'
 
 let g:python_host_prog = '/home/sofubi/.virtualenvs/nvim2/bin/python2'
 let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
 let g:node_host_prog = expand('~/.config/nvm/versions/node/v12.18.3/bin/neovim-node-host')
-.
+
 " keybinds
 nnoremap <esc> :nohl<CR>
 nnoremap <c-h> :wincmd h<CR>
@@ -104,7 +106,7 @@ nnoremap <Leader>p :GFiles<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<CR>
 nnoremap <Leader>w :Rg <C-R><C-W><space><CR>
-let g:clap_theme='dogrun'
+let g:fzf_preview_window = 'right:60%'
 
 " coc
 " use <tab> for trigger completion and navigate to the next complete item
