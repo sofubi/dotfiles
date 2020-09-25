@@ -50,12 +50,6 @@ export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --color auto'
 # Set aliases
 source $HOME/.config/zsh/.aliases
 
-if [[ "$(hostname)" != "kyoto" ]]; then
-    # npm-config-prefix
-    export PATH=~/.npm-global/bin:$PATH
-    
-fi
-
 # composer
 export PATH=~/.config/composer/vendor/bin:$PATH
 
@@ -70,11 +64,9 @@ export NVM_DIR="$HOME/.config/nvm"
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
-if [[ "$(hostname)" == "kyoto" ]] then;
-    # manage dots
-    export DOTBARE_DIR="$HOME/.dotfiles.git/"
-    export DOTBARE_TREE="$HOME"
-fi
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
 
 # Init and bundle antibody
 source <(antibody init)

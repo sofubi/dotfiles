@@ -20,4 +20,3 @@ alias python='python3'
 # editor
 alias v='nvim '
 alias vi='nvim '
-alias vim='nvim '
