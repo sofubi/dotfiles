@@ -42,6 +42,7 @@ set undolevels=5000 "bigger undofile
 set updatetime=50 "set lower update time for faster response
 set signcolumn=yes "merge signcolumn and numbercolumn into one
 set mouse=a "mice
+filetype plugin on
 
 "plugins
 call plug#begin('~/.vim/plugged')
@@ -57,20 +58,28 @@ Plug 'tpope/vim-fugitive' "git
 Plug 'sheerun/vim-polyglot' "syntax
 Plug 'wadackel/vim-dogrun' "colorscheme
 Plug 'tomasiser/vim-code-dark' "colorscheme
+Plug 'junegunn/fzf' "ctrlp and others
 Plug 'junegunn/fzf.vim' "ctrlp and others
 Plug 'APZelos/blamer.nvim' "git blame per line
 Plug 'Yggdroot/indentLine' "show indent lines
 Plug 'dyng/ctrlsf.vim' "search and replace
 Plug 'mbbill/undotree' "undotree
+Plug 'dbeniamine/todo.txt-vim' "todo.txt
+Plug 'vimwiki/vimwiki' "journal
+Plug 'junegunn/goyo.vim' "zen
+Plug 'junegunn/limelight.vim' "zen
+Plug 'jiangmiao/auto-pairs' "pairs
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } "preview md
 
 call plug#end()
 
 colorscheme codedark
+let g:clap_theme='dogrun'
 
 let g:python_host_prog = '/home/sofubi/.virtualenvs/nvim2/bin/python2'
 let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
-let g:node_host_prog = expand('~/.config/nvm/versions/node/v12.18.3/bin/neovim-node-host')
-.
+let g:node_host_prog = expand('~/.config/nvm/versions/node/v12.18.4/bin/neovim-node-host')
+
 " keybinds
 nnoremap <esc> :nohl<CR>
 nnoremap <c-h> :wincmd h<CR>
@@ -99,7 +108,7 @@ nnoremap <Leader>p :GFiles<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<CR>
 nnoremap <Leader>w :Rg <C-R><C-W><space><CR>
-let g:clap_theme='dogrun'
+let g:fzf_preview_window = 'right:60%'
 
 " coc
 " use <tab> for trigger completion and navigate to the next complete item
@@ -204,3 +213,51 @@ let g:lightline = {
 
 "ctrlsf
 let g:ctrlsf_auto_preview = 1
+
+"todo.txt
+" Use todo#Complete as the omni complete function for todo files
+au filetype todo setlocal omnifunc=todo#Complete
+
+" Auto complete projects
+au filetype todo imap <buffer> + +<C-X><C-O>
+
+" Auto complete contexts
+au filetype todo imap <buffer> @ @<C-X><C-O>
+
+" completion menu with one item
+au filetype todo setlocal completeopt+=menuone
+
+"zen
+nnoremap <leader>z :Goyo<cr>
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"journal
+let g:vimwiki_list = [{'path': '$HOME/Documents/notebook/'}]
+
+" md prev
+let g:mkdp_auto_start = 1
+let g:mkdp_browser = 'firefox-esr'
+nmap <C-p> <Plug>MarkdownPreviewToggle

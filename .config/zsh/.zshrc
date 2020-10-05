@@ -47,30 +47,42 @@ fi
 # fzf defaults
 export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --color auto'
 
-# fzf on ctrl-f
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-
 # Set aliases
 source $HOME/.config/zsh/.aliases
 
-if [[ "$(hostname)" != "kyoto" ]]; then
-    # npm-config-prefix
-    export PATH=~/.npm-global/bin:$PATH
-    
-    # cargo on path
-    export PATH=~/.cargo/bin:$PATH
-fi
+# composer
+export PATH=~/.config/composer/vendor/bin:$PATH
+
+# scripts
+export PATH=~/bin:$PATH
+
+# cargo on path
+export PATH=~/.cargo/bin:$PATH
+
+# go on path
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# snaps on path
+export PATH=/snap/bin:$PATH
+
+# yarn path
+export PATH=$PATH:~/.yarn/bin
+
+# doom emacs
+export PATH=~/.emacs.d/bin:$PATH
+
+# rvm
+source $HOME/.rvm/scripts/rvm
 
 # zsh-nvm opts
 export NVM_DIR="$HOME/.config/nvm"
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
-if [[ "$(hostname)" == "kyoto" ]] then;
-    # manage dots
-    export DOTBARE_DIR="$HOME/.dotfiles.git/"
-    export DOTBARE_TREE="$HOME"
-fi
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
 
 # Init and bundle antibody
 source <(antibody init)
@@ -78,3 +90,9 @@ antibody bundle < ~/.config/zsh/plugins.txt
 
 # Spaceship prompt opts
 eval spaceship_vi_mode_enable
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
