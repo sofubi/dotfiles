@@ -52,11 +52,11 @@ export QT_STYLE_OVERRIDE=gtk
 # monitor layout
 /home/sofubi/.screenlayout/default.sh
 
+# geoclue2
+/usr/lib/geoclue-2.0/demos/agent &
+
 # pywal
 /usr/bin/wal -R
-
-# redshift
-/sbin/redshift &
 
 # flameshot
 /usr/bin/flameshot &

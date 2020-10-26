@@ -58,6 +58,7 @@ export PATH=~/bin:$PATH
 
 # cargo on path
 export PATH=~/.cargo/bin:$PATH
+export RUST_SRC_PATH="$(rustc --print sysroot)"
 
 # go on path
 export PATH=$PATH:/usr/local/go/bin
@@ -72,8 +73,14 @@ export PATH=$PATH:~/.yarn/bin
 # doom emacs
 export PATH=~/.emacs.d/bin:$PATH
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# clean path
+typeset -aU path
+
 # rvm
-source $HOME/.rvm/scripts/rvm
+source $HOME/.rvm/src/rvm
 
 # zsh-nvm opts
 export NVM_DIR="$HOME/.config/nvm"
@@ -93,6 +100,3 @@ eval spaceship_vi_mode_enable
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
