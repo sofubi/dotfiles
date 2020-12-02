@@ -4,6 +4,7 @@
 		"vue-html": "html",
 		"vue": "html",
 		"blade": "html",
+		"blade.php": "html",
 		"jinja": "html"
 	},
 	"emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
@@ -11,5 +12,11 @@
 	"snippets.extends": {
 		"liquid": ["html"]
 	},
-	"python.venvPath": "~/.virtualenvs"
+	"python.venvFolders": [
+		"envs",
+		".pyenv",
+		".direnv",
+		".virtualenvs"
+	],
+	"lua.version": "5.3"
 }

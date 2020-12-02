@@ -35,7 +35,6 @@ if !exists('g:vscode')
   set shortmess+=c "remove messages from completion menus
   set noswapfile "do not use swap when losing a file
   set tabstop=4 "set tabs to 4 spaces
-  set termguicolors "use 256 colors
   set timeoutlen=6000
   set undodir=~/.vim/undo-dir
   set undofile "use an undofile
@@ -57,8 +56,8 @@ if !exists('g:vscode')
   Plug 'vim-scripts/ReplaceWithRegister' "replace in motion
   Plug 'tpope/vim-fugitive' "git
   Plug 'sheerun/vim-polyglot' "syntax
-  Plug 'wadackel/vim-dogrun' "colorscheme
-  Plug 'tomasiser/vim-code-dark' "colorscheme
+  Plug 'dracula/vim', {'name': 'dracula'} "colorscheme
+  Plug 'romainl/Apprentice', {'branch': 'fancylines-and-neovim'}
   Plug 'junegunn/fzf' "ctrlp and others
   Plug 'junegunn/fzf.vim' "ctrlp and others
   Plug 'APZelos/blamer.nvim' "git blame per line
@@ -72,11 +71,16 @@ if !exists('g:vscode')
   Plug 'jiangmiao/auto-pairs' "pairs
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } "preview md
   Plug 'tpope/vim-sleuth' "match current file indents
+  Plug 'lambdalisue/fern.vim' "better nerdtree
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'lambdalisue/fern-mapping-git.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/fern-hijack.vim'
+  Plug 'lambdalisue/nerdfont.vim' "icons
 
   call plug#end()
 
-  colorscheme codedark
-  let g:clap_theme='dogrun'
+  colorscheme apprentice
 
   let g:python_host_prog = '/home/sofubi/.virtualenvs/nvim2/bin/python2'
   let g:python3_host_prog = '/home/sofubi/.virtualenvs/nvim3/bin/python'
@@ -110,7 +114,6 @@ if !exists('g:vscode')
   nnoremap <Leader>f :Files<CR>
   nnoremap <Leader>g :Rg<CR>
   nnoremap <Leader>w :Rg <C-R><C-W><space><CR>
-  let g:fzf_preview_window = 'right:60%'
 
   " coc
   " use <tab> for trigger completion and navigate to the next complete item
@@ -159,7 +162,7 @@ if !exists('g:vscode')
   \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
   \   }
   \ }
-  nmap <silent> <leader>e :CocCommand explorer --preset floating<CR>
+  " nmap <silent> <leader>e :CocCommand explorer --preset floating<CR>
   " go to def
   nmap <silent> gd <Plug>(coc-definition)
   " show docs
@@ -201,7 +204,7 @@ if !exists('g:vscode')
   endfunction
 
   let g:lightline = {
-    \ 'colorscheme': 'deus',
+    \ 'colorscheme': 'apprentice',
     \ 'active': {
     \	'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
@@ -230,6 +233,8 @@ if !exists('g:vscode')
   au filetype todo setlocal completeopt+=menuone
 
   "zen
+  let g:limelight_conceal_ctermfg = 'gray'
+  let g:limelight_conceal_ctermfg = 240
   nnoremap <leader>z :Goyo<cr>
   function! s:goyo_enter()
     if executable('tmux') && strlen($TMUX)
@@ -257,13 +262,27 @@ if !exists('g:vscode')
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
   "journal
-  let g:vimwiki_list = [{'path': '$HOME/Documents/notebook/'}]
+  let g:vimwiki_list = [{
+    \ 'path': '$HOME/Documents/notebook/',
+    \ 'syntax': 'markdown', 
+    \ 'ext': '.md',
+    \ 'template_path': '',
+    \ 'custom_wiki2html': '$GOPATH/bin/vimwiki-godown',
+    \ 'custom_wiki2html_args': 'xyz/'
+    \ }]
 
   " md prev
-  let g:mkdp_auto_start = 1
-  let g:mkdp_browser = 'firefox-esr'
+  let g:mkdp_browser = 'firefox'
   nmap <C-p> <Plug>MarkdownPreviewToggle
+
+  " indent line
+  let g:indentLine_conceallevel=0 
+
+  " fern
+  let g:fern#renderer="nerdfont"
+  nnoremap <leader>e :Fern . -drawer -toggle<cr>
 else
+
   nnoremap <esc> :nohl<CR>
   nnoremap <A-l> :Tabnext<CR>
   nnoremap <A-h> :Tabprevious<CR>

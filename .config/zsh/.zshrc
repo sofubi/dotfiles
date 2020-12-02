@@ -46,6 +46,11 @@ fi
 
 # fzf defaults
 export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --color auto'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=fg:#9ea3c0,bg:#222433,hl:#545c8c
+--color=fg+:#535f98,bg+:#2a2c3f,hl+:#929be5
+--color=info:#545c8c,prompt:#929be5,pointer:#73c1a9
+--color=marker:#73c1a9,spinner:#b5ae7d,header:#87afaf'
 
 # Set aliases
 source $HOME/.config/zsh/.aliases
@@ -63,6 +68,7 @@ export RUST_SRC_PATH="$(rustc --print sysroot)"
 # go on path
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
 
 # snaps on path
 export PATH=/snap/bin:$PATH
@@ -95,8 +101,8 @@ source ~/.local/bin/virtualenvwrapper.sh
 source <(antibody init)
 antibody bundle < ~/.config/zsh/plugins.txt
 
-# Spaceship prompt opts
-eval spaceship_vi_mode_enable
+# Starship
+eval "$(starship init zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

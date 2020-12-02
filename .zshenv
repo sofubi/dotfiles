@@ -3,11 +3,13 @@
 # Adds ~/.local/bin to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
+export PATH=/usr/local/bin:/usr/bin:/bin:$PATH:/usr/local/sbin:/usr/sbin:/sbin
+
+export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+
 # Default programs:
 export VISUAL="nvim"
 export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="firefox"
 export READER="zathura"
 
 # ~/ Clean-up:

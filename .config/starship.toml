@@ -1,0 +1,123 @@
+format = """
+[┌───────────────────](bold green)$time $username
+[│](bold green)$character\
+    $directory\
+    $git_status\
+    $git_state\
+    $git_commit
+[│](bold green)$git_branch\
+    $docker_context\
+    $golang\
+    $lua\
+    $nodejs\
+    $python\
+    $ruby\
+    $rust\
+    $package_version
+[│](bold green)$jobs\
+    $hostname\
+    $status\
+    $cmd_duration
+[└─](bold green) 
+"""
+
+[battery]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[character]
+success_symbol = "[|||](bold green)"
+error_symbol = "[_|_](bold red)"
+vicmd_symbol = "[-|-](bold green)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = "../"
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+symbol = "שׂ "
+
+[golang]
+symbol = "ﳑ "
+
+[java]
+disabled = true
+
+[jobs]
+symbol = "ﯟ "
+
+[julia]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[mercurial_branch]
+disabled = true
+
+[nim]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[openstack]
+disabled = true
+
+[package_version]
+symbol = " "
+
+[perl]
+disabled = true
+
+[php]
+symbol = " "
+
+[purescript]
+disabled = true
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[singularity]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[time]
+disabled = false
+format = " [$time]($style)"
+
+[username]
+format = "[$user]($style)"
+
+[zig]
+disabled = true

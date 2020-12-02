@@ -34,41 +34,44 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# init keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+# # init keyring
+# eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 
-# export keyring globals
+# # export keyring globals
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
-# override style for QT applications
+# # override style for QT applications
 export QT_STYLE_OVERRIDE=gtk
 
-# notifs
-/usr/bin/dunst > /dev/null 2>&1 &
+# # notifs
+# /usr/bin/dunst > /dev/null 2>&1 &
 
-# compositor
-/usr/bin/picom --experimental-backends -b
+# # compositor
+# /usr/bin/picom --experimental-backends -b
 
-# monitor layout
-/home/sofubi/.screenlayout/default.sh
+# # monitor layout
+# /home/sofubi/.screenlayout/default.sh
 
-# geoclue2
-/usr/lib/geoclue-2.0/demos/agent &
+# # geoclue2
+# /usr/lib/geoclue-2.0/demos/agent &
 
-# pywal
-/usr/bin/wal -R
+# # pywal
+# /usr/bin/wal -R
 
-# flameshot
-/usr/bin/flameshot &
+# # flameshot
+# /usr/bin/flameshot &
 
-# status
-while true; do
-	xsetroot -name "$( date +"%F %R" )"
-	sleep 1m 
-done &
+# # redshift
+# /usr/bin/redshift &
 
-# screenlock
-xautolock -time 10 -locker "betterlockscreen -l blur --off 3" -nowlocker "betterlockscreen -l blur --off 3" &
+# # status
+# # while true; do
+# # 	xsetroot -name "$( date +"%F %R" )"
+# # 	sleep 1m 
+# # done &
+
+# # screenlock
+# xautolock -time 10 -locker "betterlockscreen -l blur --off 3" -nowlocker "betterlockscreen -l blur --off 3" &
 
 # exec wm
-exec dwm
+exec i3
