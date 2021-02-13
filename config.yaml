@@ -1,6 +1,13 @@
 config:
   backup: true
   create: true
-  dotpath: dotfiles
+  dotpath: ~/.dotfiles
+  keepdot: true
 dotfiles:
+  d_nvim:
+    dst: ~/.config/nvim
+    src: config/nvim
 profiles:
+  thinkpad:
+    dotfiles:
+      - d_nvim
