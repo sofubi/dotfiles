@@ -1,9 +1,0 @@
-djui/alias-tips
-zsh-users/zsh-autosuggestions
-zuxfoucault/colored-man-pages_mod
-lukechilds/zsh-nvm
-kazhala/dotbare
-robbyrussell/oh-my-zsh path:plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
-
-# this goes last
-zsh-users/zsh-syntax-highlighting

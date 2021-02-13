@@ -1,5 +1,0 @@
-#!/bin/sh
-
-DATE=$(date +"%Y-%m-%d")
-touch todo-$DATE.txt
-touch done-$DATE.txt
