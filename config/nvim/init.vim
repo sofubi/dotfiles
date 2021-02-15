@@ -110,14 +110,17 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'preservim/tagbar'
+Plug 'alexaandru/nvim-lspupdate'
+Plug 'steelsojka/completion-buffers'
+Plug 'nvim-treesitter/completion-treesitter'
 
 call plug#end()
 
 colorscheme forest-night
 
-let g:python_host_prog = expand('~/.virtualenvs/nvim2/bin/python2')
+let g:python_host_prog = expand('~/.virtualenvs/nvim2/bin/python')
 let g:python3_host_prog = expand('~/.virtualenvs/nvim3/bin/python')
-let g:node_host_prog = expand('~/.nvm/versions/node/v14.15.4/bin/neovim-node-host')
+let g:node_host_prog = expand('~/.asdf/shims/neovim-node-host')
 
 " keybinds
 nnoremap <esc> :nohl<CR>
@@ -298,3 +301,13 @@ imap <silent> <c-p> <Plug>(completion_trigger)
 
 let g:completion_enable_auto_popup = 1
 let g:completion_trigger_on_delete = 1
+
+let g:completion_auto_change_source = 1
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp']},
+    \{'complete_items': ['ts']},
+    \{'complete_items': ['buffers']},
+    \{'complete_items': ['buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'},
+    \]

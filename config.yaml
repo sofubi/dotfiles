@@ -2,12 +2,37 @@ config:
   backup: true
   create: true
   dotpath: ~/.dotfiles
-  keepdot: true
 dotfiles:
-  d_nvim:
-    dst: ~/.config/nvim
-    src: config/nvim
+  f_forest_night.vim:
+    src: config/nvim/forest_night.vim
+    dst: ~/.config/nvim/forest_night.vim
+    chmod: '660'
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+    chmod: '660'
+  f_direnvrc:
+    src: config/direnv/direnvrc
+    dst: ~/.config/direnv/direnvrc
+    chmod: '660'
+  f_config.yaml:
+    src: config/efm-langserver/config.yaml
+    dst: ~/.config/efm-langserver/config.yaml
+    chmod: '644'
+  f_aliasrc:
+    src: config/shell/aliasrc
+    dst: ~/.config/shell/aliasrc
+    chmod: '660'
+  f_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+    chmod: '644'
 profiles:
-  thinkpad:
+  akhiabara:
     dotfiles:
-      - d_nvim
+    - f_forest_night.vim
+    - f_zshrc
+    - f_direnvrc
+    - f_config.yaml
+    - f_aliasrc
+    - f_init.vim
