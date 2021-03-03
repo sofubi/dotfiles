@@ -13,6 +13,9 @@ znap source zsh-users/zsh-syntax-highlighting
 # asdf
 znap source asdf-vm/asdf asdf.sh
 
+# rust
+znap source $HOME/.cargo/env
+
 # Clone some stuff
 znap clone \
     asdf-community/asdf-direnv

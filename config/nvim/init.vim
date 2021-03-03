@@ -120,7 +120,6 @@ colorscheme forest-night
 
 let g:python_host_prog = expand('~/.virtualenvs/nvim2/bin/python')
 let g:python3_host_prog = expand('~/.virtualenvs/nvim3/bin/python')
-let g:node_host_prog = expand('~/.asdf/shims/neovim-node-host')
 
 " keybinds
 nnoremap <esc> :nohl<CR>
@@ -217,6 +216,8 @@ nvim_lsp.pyright.setup{}
 nvim_lsp.tsserver.setup{}
 nvim_lsp.vimls.setup{}
 nvim_lsp.yamlls.setup{}
+nvim_lsp.clangd.setup{}
+nvim_lsp.rust_analyzer.setup{}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -282,7 +283,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "bashls", "cssls", "dockerls", "tsserver", "vimls", "yamlls", "jsonls", "html" }
+local servers = { "pyright", "bashls", "cssls", "dockerls", "tsserver", "vimls", "yamlls", "jsonls", "html", "rust_analyzer", "clangd" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
