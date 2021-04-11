@@ -77,7 +77,7 @@ set statusline+=%{tagbar#currenttag('[%s]\ ','')}
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'forest_night'
+let g:crystalline_theme = 'everforest'
 
 set showtabline=2
 set guioptions-=e
@@ -95,7 +95,7 @@ Plug 'nathanaelkane/vim-indent-guides' "show indent lines
 Plug 'dyng/ctrlsf.vim' "search and replace
 Plug 'jiangmiao/auto-pairs' "pairs
 Plug 'tpope/vim-sleuth' "match current file indents
-Plug 'sainnhe/forest-night' "colors
+Plug 'sainnhe/everforest' "colors
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -116,10 +116,11 @@ Plug 'nvim-treesitter/completion-treesitter'
 
 call plug#end()
 
-colorscheme forest-night
+colorscheme everforest
 
 let g:python_host_prog = expand('~/.virtualenvs/nvim2/bin/python')
 let g:python3_host_prog = expand('~/.virtualenvs/nvim3/bin/python')
+let g:node_host_prog = expand('~/.nvm/versions/node/v14.16.0/bin/neovim-node-host')
 
 " keybinds
 nnoremap <esc> :nohl<CR>
@@ -193,9 +194,6 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_width_allow_resize = 1
 nnoremap <Leader>ntt :NvimTreeToggle<CR>
 nnoremap <Leader>ntf :NvimTreeFindFile<CR>
-
-" airline
-let g:airline_theme='forest_night'
 
 " sneak
 let g:sneak#label = 1

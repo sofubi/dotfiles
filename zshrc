@@ -13,8 +13,16 @@ znap source zsh-users/zsh-syntax-highlighting
 # asdf
 znap source asdf-vm/asdf asdf.sh
 
-# rust
-znap source $HOME/.cargo/env
+# nvm
+znap source nvm-sh/nvm nvm.sh
+
+# GO
+export GOPATH=$HOME/go
+
+# pyenv
+export PATH="/home/sofubi/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Clone some stuff
 znap clone \
@@ -30,6 +38,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 # path
 export -U path=(
     ~/go/bin
+    ~/.poetry/bin
+    ~/.cargo/env
+    ~/.local/bin
     $path
     .
 )
@@ -47,3 +58,9 @@ HISTFILE=~/.cache/zsh/history
 
 # Load aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.poetry/bin:$PATH"
