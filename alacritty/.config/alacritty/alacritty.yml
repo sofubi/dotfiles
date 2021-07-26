@@ -175,38 +175,39 @@
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# TokyoNight Alacritty Colors
+# github Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: '0x24283b'
-    foreground: '0xc0caf5'
+    background: '0xffffff'
+    foreground: '0x586069'
 
   # Normal colors
   normal:
-    black:   '0x1D202F'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xa9b1d6'
+    black:   '0x697179'
+    red:     '0xd03d3d'
+    green:   '0x14ce14'
+    yellow:  '0x949800'
+    blue:    '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan:    '0x0598bc'
+    white:   '0x586069'
 
   # Bright colors
   bright:
-    black:   '0x414868'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xc0caf5'
+    black:   '0x666666'
+    red:     '0xcd3131'
+    green:   '0x14ce14'
+    yellow:  '0xb5ba00'
+    blue:    '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan:    '0x0598bc'
+    white:   '0x586069'
 
   indexed_colors:
-    - { index: 16, color: '0xff9e64' }
-    - { index: 17, color: '0xdb4b4b' }
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcd3131' }
+
 # Colors (Tomorrow Night)
 #colors:
   # Default colors

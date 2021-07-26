@@ -172,7 +172,12 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'folke/tokyonight.nvim'
+    'projekt0n/github-nvim-theme',
+    config = function()
+      require('github-theme').setup{
+        themeStyle='light'
+      }
+    end
   }
 
   use {

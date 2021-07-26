@@ -1,5 +1,5 @@
-background-color=#3b4261
-text-color=#9ece6a
-border-color=#364A82
-progress-color=over #c0caf5
+background-color=#fafafa
+text-color=#333333
+border-color=#4078c0
+progress-color=source #6cc644
 default-timeout=5000
