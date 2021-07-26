@@ -1,0 +1,12 @@
+
+---
+connected: 0 - 10
+
+---
+gratitude list: ...
+
+---
+prayer: ...
+
+---
+entry: ...

@@ -1,0 +1,44 @@
+* {
+  font-family: 'Hurmit Nerd Font';
+  font-size: 13px;
+}
+
+window {
+  margin: 0px;
+  border: 1px solid #bb9af7;
+  background-color: #565f89;
+}
+
+#input {
+  margin: 5px;
+  border: none;
+  color: #9ece6a;
+  background-color: #24283b;
+}
+
+#inner-box {
+  margin: 5px;
+  border: none;
+  background-color: #24283b;
+}
+
+#outer-box {
+  margin: 5px;
+  border: none;
+  background-color: #24283b;
+}
+
+#scroll {
+  margin: 0px;
+  border: none;
+}
+
+#text {
+  margin: 5px;
+  border: none;
+  color: #9ece6a;
+} 
+
+#entry:selected {
+  background-color: #565f89;
+}

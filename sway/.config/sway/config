@@ -1,0 +1,242 @@
+# vim:filetype=i3config
+
+set $wallpaper ~/Pictures/wallpaper.png
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu wofi \
+        --show run
+set $browser firefox
+set $laptop eDP-1
+
+exec ~/.config/sway/startup.sh
+
+font pango:Hurmit Nerd Font Medium 12
+
+floating_modifier $mod normal
+default_floating_border pixel 3
+default_border pixel 3
+gaps inner 12
+seat * hide_cursor 2000
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+workspace 1¹ output DP-1 
+workspace 2¹ output DP-1 
+workspace 3¹ output DP-1 
+workspace 4¹ output DP-1 
+workspace 5¹ output DP-1 
+workspace 6¹ output DP-1 
+workspace 7¹ output DP-1 
+workspace 8¹ output DP-1 
+workspace 9¹ output DP-1 
+workspace 0¹ output DP-1 
+workspace /¹ output DP-1 
+
+workspace 1² output HDMI-A-2
+workspace 2² output HDMI-A-2
+workspace 3² output HDMI-A-2
+workspace 4² output HDMI-A-2
+workspace 5² output HDMI-A-2
+workspace 6² output HDMI-A-2
+workspace 7² output HDMI-A-2
+workspace 8² output HDMI-A-2
+workspace 9² output HDMI-A-2
+workspace 0² output HDMI-A-2
+workspace /² output HDMI-A-2
+
+workspace 1³ output eDP-1
+workspace 2³ output eDP-1
+workspace 3³ output eDP-1
+workspace 4³ output eDP-1
+workspace 5³ output eDP-1
+workspace 6³ output eDP-1
+workspace 7³ output eDP-1
+workspace 8³ output eDP-1
+workspace 9³ output eDP-1
+workspace 0³ output eDP-1
+workspace /³ output eDP-1
+
+bindsym $mod+Ctrl+l exec ~/.config/sway/switch-output.sh left
+bindsym $mod+Ctrl+r exec ~/.config/sway/switch-output.sh right
+bindsym $mod+Ctrl+b exec ~/.config/sway/switch-output.sh bottom
+bindsym $mod+Ctrl+Shift+l move output DP-1
+bindsym $mod+Ctrl+Shift+r move output HDMI-A-2
+bindsym $mod+Ctrl+Shift+b move output eDP-1
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+p focus parent
+bindsym $mod+Ctrl+p focus child
+bindsym $mod+Shift+s sticky toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+workspace_auto_back_and_forth yes
+
+bindsym $mod+Shift+Ctrl+1 mark "sp1", move scratchpad
+bindsym $mod+Shift+Ctrl+2 mark "sp2", move scratchpad
+bindsym $mod+Shift+Ctrl+3 mark "sp3", move scratchpad
+bindsym $mod+Shift+Ctrl+4 mark "sp4", move scratchpad
+bindsym $mod+Shift+Ctrl+5 mark "sp5", move scratchpad
+bindsym $mod+Shift+Ctrl+6 mark "sp6", move scratchpad
+bindsym $mod+Shift+Ctrl+7 mark "sp7", move scratchpad
+bindsym $mod+Shift+Ctrl+8 mark "sp8", move scratchpad
+bindsym $mod+Shift+Ctrl+9 mark "sp9", move scratchpad
+bindsym $mod+Shift+Ctrl+0 mark "sp0", move scratchpad
+bindsym $mod+Shift+grave mark "sp`", move scratchpad
+bindsym $mod+Shift+tab mark "sp`", move scratchpad
+
+bindsym $mod+Ctrl+1 [con_mark="sp1"] scratchpad show
+bindsym $mod+Ctrl+2 [con_mark="sp2"] scratchpad show
+bindsym $mod+Ctrl+3 [con_mark="sp3"] scratchpad show
+bindsym $mod+Ctrl+4 [con_mark="sp4"] scratchpad show
+bindsym $mod+Ctrl+5 [con_mark="sp5"] scratchpad show
+bindsym $mod+Ctrl+6 [con_mark="sp6"] scratchpad show
+bindsym $mod+Ctrl+7 [con_mark="sp7"] scratchpad show
+bindsym $mod+Ctrl+8 [con_mark="sp8"] scratchpad show
+bindsym $mod+Ctrl+9 [con_mark="sp9"] scratchpad show
+bindsym $mod+Ctrl+0 [con_mark="sp0"] scratchpad show
+bindsym $mod+grave [con_mark="sp`"] scratchpad show
+bindsym $mod+tab [con_mark="sp`"] scratchpad show
+
+bindsym $mod+Shift+a move scratchpad
+bindsym $mod+a [title="^((?!scratch).)*$"] scratchpad show
+
+for_window [title="vimclip"] {
+    floating enable
+    resize set 800 600
+    move position 1100 20
+} 
+bindsym $mod+Shift+n exec alacritty --title vimclip -e $HOME/bin/vimclip
+
+bindsym $mod+Ctrl+f \
+	workspace F, \
+	bar hidden_state toggle 0, \
+	bar mode toggle 0
+
+bindsym $mod+Shift+Ctrl+f \
+	bar hidden_state hide 0, \
+	bar mode hide 0, \
+	border none, \
+	move container to workspace F, workspace F
+
+bindsym $mod+Shift+f bar hidden_state toggle 0, bar mode toggle 0
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+	bindsym $left exec swaymsg resize grow left 10 || swaymsg resize shrink right 10
+	bindsym shift+$left resize shrink left 10
+	bindsym $right exec swaymsg resize grow right 10 || swaymsg resize shrink left 10
+	bindsym shift+$right resize shrink right 10
+
+	bindsym $down exec swaymsg resize grow down 10 || swaymsg resize shrink up 10
+	bindsym shift+$down resize shrink down 5
+	bindsym $up exec swaymsg resize grow up 10 || swaymsg resize shrink down 10
+	bindsym shift+$up resize shrink up 10
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+set $mode_opacity "opacity: +(j) -(k) 1.0(l) 0.x(0-9)"
+bindsym $mod+o mode $mode_opacity
+mode $mode_opacity {
+	bindsym 0 opacity set 0.0
+	bindsym 1 opacity set 0.1
+	bindsym 2 opacity set 0.2
+	bindsym 3 opacity set 0.3
+	bindsym 4 opacity set 0.4
+	bindsym 5 opacity set 0.5
+	bindsym 6 opacity set 0.6
+	bindsym 7 opacity set 0.7
+	bindsym 8 opacity set 0.8
+	bindsym 9 opacity set 0.9
+
+	bindsym j opacity plus 0.1
+	bindsym k opacity minus 0.1
+	bindsym l opacity set 1.0
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+set $mode_system "(l)ock; l(o)gout; (r)eboot; (p)oweroff; reload (c)onfig"
+bindsym $mod+Escape mode $mode_system
+mode $mode_system {
+	bindsym l exec swaylock -f
+	bindsym o exit
+	bindsym r exec sudo reboot, mode "default"
+	bindsym p exec sudo poweroff, mode "default"
+	bindsym c reload
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+set $mode_snap "(x)snap; (s)election" 
+bindsym $mod+Alt+s mode $mode_snap
+mode $mode_snap {
+  bindsym $mod+x exec slurp | grim -g - - | wl-copy
+
+  bindsym $mod+s exec slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+set $mode_record "(r)ecord; (k)ill"
+bindsym $mod+Alt+r mode $mode_record
+mode $mode_record {
+  # Select and take a video
+  bindsym $mod+r exec wf-recorder -g "$(slurp)" -f $(xdg-user-dir VIDEOS)/Screenclips/$(date +'%Y-%m-%d-%H%M%S_recording.mkv')
+  
+  bindsym $mod+k exec pkill -2 wf-recorder
+  
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+output DP-1 pos 0 0 res 1920x1080
+output HDMI-A-2 pos 1920 0 res 1920x1080
+output eDP-1 pos 960 1080 res 1920x1080
+output * background $wallpaper fill
+
+input "1739:0:Synaptics_TM3276-022" {
+    tap disabled
+    dwt enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    click_method clickfinger
+}
+
+# swayidle
+exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f' 
+
+include ~/.config/sway/theme.config
+
+include /etc/sway/config.d/*
