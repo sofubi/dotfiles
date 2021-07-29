@@ -81,10 +81,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'jiangmiao/auto-pairs',
-  }
-
-  use {
     'norcalli/snippets.nvim',
     config = function()
       require('plugins.snippets')
@@ -136,8 +132,22 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'mfussenegger/nvim-dap',
+    config = function()
+      require('plugins.dap')
+    end
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('plugins.treesitter')
+    end,
     run = ':TSUpdate'
+  }
+
+  use {
+    'jiangmiao/auto-pairs',
   }
 
   use {
@@ -175,15 +185,9 @@ return require('packer').startup(function(use)
     'projekt0n/github-nvim-theme',
     config = function()
       require('github-theme').setup{
-        themeStyle='light'
+        themeStyle='light',
+        transparent=true
       }
-    end
-  }
-
-  use {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('plugins.dap')
     end
   }
 

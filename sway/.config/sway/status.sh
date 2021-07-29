@@ -5,4 +5,4 @@ battery_info=$(upower --show-info $(upower --enumerate |\
   egrep "state|percentage"|\
   awk '{print $2}'))
 
-echo $battery_info $date_formatted
+echo "$battery_info $date_formatted"

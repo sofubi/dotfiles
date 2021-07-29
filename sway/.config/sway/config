@@ -200,7 +200,7 @@ bindsym $mod+Alt+s mode $mode_snap
 mode $mode_snap {
   bindsym $mod+x exec slurp | grim -g - - | wl-copy
 
-  bindsym $mod+s exec slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+  bindsym $mod+s exec slurp | grim -g - - | wl-copy
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -218,11 +218,24 @@ mode $mode_record {
   bindsym Escape mode "default"
 }
 
+set $mode_adjust "adjust: volume +(j) -(k) (h)igh (l)ow (m)ute"
+bindsym $mod+n mode $mode_adjust
+mode $mode_adjust {
+	bindsym j exec pamixer -i 10
+	bindsym k exec pamixer -d 10
+	bindsym h exec pamixer -i 70
+	bindsym l exec pamixer -d 20
+	bindsym m exec pamixer -d 100, mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output DP-1 pos 0 0 res 1920x1080
-output HDMI-A-2 pos 1920 0 res 1920x1080
+output DP-1 pos 0 -400 res 1920x1080 transform 270
+output HDMI-A-2 pos 1080 0 res 1920x1080
 output eDP-1 pos 960 1080 res 1920x1080
 output * background $wallpaper fill
 

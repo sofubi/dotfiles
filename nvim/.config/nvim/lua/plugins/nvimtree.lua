@@ -1,7 +1,7 @@
 local utils = require('utils')
 local g = vim.g
 
-g.nvim_tree_side = 'right'
+g.nvim_tree_side = 'left'
 g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
 g.nvim_tree_auto_close = 1
 g.nvim_tree_follow = 1

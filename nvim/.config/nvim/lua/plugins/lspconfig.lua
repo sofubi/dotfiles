@@ -1,4 +1,4 @@
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require 'lspconfig'
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -54,7 +54,7 @@ local servers = { "bashls", "cssls", "dockerls", "jsonls",  "pyright", "tsserver
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     capabilities = capabilities;
-    on_attach = on_attach(),
+    on_attach = on_attach,
   }
 end
 
@@ -92,19 +92,12 @@ local languages = {
 }
 
 nvim_lsp.efm.setup {
+  cmd = {'efm-langserver'},
   on_attach = on_attach,
-  init_options = { documentFormatting = true },
-  settings = {
-    rootMarkers = {".git/"},
-    languages = languages
-  },
-  filetypes = vim.tbl_keys(languages)
+  init_options = { documentFormatting = true, codeAction = true },
 }
 
 USER = vim.fn.expand('$USER')
-
-local sumneko_root_path = ""
-local sumneko_binary = ""
 
 nvim_lsp.sumneko_lua.setup {
   cmd = {'lua-language-server'},
