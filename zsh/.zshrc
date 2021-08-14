@@ -74,6 +74,7 @@ plugins=(archlinux
          docker
          fasd
          git
+         kubectl
          sudo
          vi-mode
          virtualenvwrapper
@@ -116,8 +117,7 @@ fi
 eval "$(starship init zsh)"
 
 # fnm
-export PATH=/home/sofubi/.fnm:$PATH
-eval "`fnm env`"
+eval "$(fnm env)"
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -136,3 +136,9 @@ if [ -e /home/sofubi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sofubi/.n
 export PATH="$PATH:$HOME/.bin"
 
 export MANPAGER="nvim -c 'set ft=man' -"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+export PATH="$PATH:$HOME/.emacs.d/bin"

@@ -195,12 +195,12 @@ mode $mode_system {
 	bindsym Escape mode "default"
 }
 
-set $mode_snap "(x)snap; (s)election" 
+set $mode_snap "(s)nap; s(e)lection" 
 bindsym $mod+Alt+s mode $mode_snap
 mode $mode_snap {
-  bindsym $mod+x exec slurp | grim -g - - | wl-copy
+  bindsym $mod+s exec grim -g - - | wl-copy
 
-  bindsym $mod+s exec slurp | grim -g - - | wl-copy
+  bindsym $mod+e exec slurp | grim -g - - | wl-copy
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -226,6 +226,16 @@ mode $mode_adjust {
 	bindsym h exec pamixer -i 70
 	bindsym l exec pamixer -d 20
 	bindsym m exec pamixer -d 100, mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+set $mode_notifications "(d)o-not-disturb; d(e)fault"
+bindsym  $mod+q mode $mode_notifications
+mode $mode_notifications {
+  bindsym d exec makoctl set-mode do-not-disturb
+  bindsym e exec makoctl set-mode default
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
