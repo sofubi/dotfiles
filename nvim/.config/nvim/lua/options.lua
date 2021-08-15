@@ -6,9 +6,7 @@ local cmd = vim.cmd
 local indent = 2
 
 -- Set python and node providers
-g['python_host_prog'] = os.getenv("HOME")..'/.virtualenvs/nvim2/bin/python'
 g['python3_host_prog'] = os.getenv("HOME")..'/.virtualenvs/nvim3/bin/python'
-g['node_host_prog'] = os.getenv("HOME")..'/.fnm/node-versions/v14.17.3/installation/bin/neovim-node-host'
 
 -- colors
 g.background='light'

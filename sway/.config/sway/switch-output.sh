@@ -4,11 +4,8 @@ if [[ "$1" == "left" ]]; then
 	swaymsg focus output DP-1
 	output=¹
 elif [[ "$1" == "right" ]]; then
-	swaymsg focus output HDMI-A-2
+	swaymsg focus output DP-2
 	output=²
-else
-  swaymsg focus output eDP-1
-  output=³
 fi
 
 swaymsg bindsym $mod+1 workspace 1$output

@@ -43,36 +43,22 @@ workspace 9¹ output DP-1
 workspace 0¹ output DP-1 
 workspace /¹ output DP-1 
 
-workspace 1² output HDMI-A-2
-workspace 2² output HDMI-A-2
-workspace 3² output HDMI-A-2
-workspace 4² output HDMI-A-2
-workspace 5² output HDMI-A-2
-workspace 6² output HDMI-A-2
-workspace 7² output HDMI-A-2
-workspace 8² output HDMI-A-2
-workspace 9² output HDMI-A-2
-workspace 0² output HDMI-A-2
-workspace /² output HDMI-A-2
-
-workspace 1³ output eDP-1
-workspace 2³ output eDP-1
-workspace 3³ output eDP-1
-workspace 4³ output eDP-1
-workspace 5³ output eDP-1
-workspace 6³ output eDP-1
-workspace 7³ output eDP-1
-workspace 8³ output eDP-1
-workspace 9³ output eDP-1
-workspace 0³ output eDP-1
-workspace /³ output eDP-1
+workspace 1² output DP-2
+workspace 2² output DP-2
+workspace 3² output DP-2
+workspace 4² output DP-2
+workspace 5² output DP-2
+workspace 6² output DP-2
+workspace 7² output DP-2
+workspace 8² output DP-2
+workspace 9² output DP-2
+workspace 0² output DP-2
+workspace /² output DP-2
 
 bindsym $mod+Ctrl+l exec ~/.config/sway/switch-output.sh left
 bindsym $mod+Ctrl+r exec ~/.config/sway/switch-output.sh right
-bindsym $mod+Ctrl+b exec ~/.config/sway/switch-output.sh bottom
 bindsym $mod+Ctrl+Shift+l move output DP-1
 bindsym $mod+Ctrl+Shift+r move output HDMI-A-2
-bindsym $mod+Ctrl+Shift+b move output eDP-1
 
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
@@ -130,17 +116,6 @@ for_window [title="vimclip"] {
     move position 1100 20
 } 
 bindsym $mod+Shift+n exec alacritty --title vimclip -e $HOME/bin/vimclip
-
-bindsym $mod+Ctrl+f \
-	workspace F, \
-	bar hidden_state toggle 0, \
-	bar mode toggle 0
-
-bindsym $mod+Shift+Ctrl+f \
-	bar hidden_state hide 0, \
-	bar mode hide 0, \
-	border none, \
-	move container to workspace F, workspace F
 
 bindsym $mod+Shift+f bar hidden_state toggle 0, bar mode toggle 0
 
@@ -245,8 +220,7 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 output DP-1 pos 0 -400 res 1920x1080 transform 270
-output HDMI-A-2 pos 1080 0 res 1920x1080
-output eDP-1 pos 960 1080 res 1920x1080
+output DP-2 pos 1080 0 res 1920x1080
 output * background $wallpaper fill
 
 input "1739:0:Synaptics_TM3276-022" {

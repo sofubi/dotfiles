@@ -65,14 +65,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'oberblastmeister/neuron.nvim',
-    branch = 'unstable',
-    config = function()
-      require('plugins.neuron')
-    end
-  }
-
-  use {
     'kyazdani42/nvim-tree.lua',
     requires = {'kyazdani42/nvim-web-devicons'},
     config = function()
@@ -174,7 +166,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'alexaandru/nvim-lspupdate'
+    'kabouzeid/nvim-lspinstall',
   }
 
   use {

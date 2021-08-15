@@ -134,6 +134,7 @@ export MPD_HOST=127.0.0.1
 if [ -e /home/sofubi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sofubi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export MANPAGER="nvim -c 'set ft=man' -"
 
@@ -142,3 +143,5 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 export PATH="$PATH:$HOME/.emacs.d/bin"
+
+export PATH="$PATH:$HOME/.npm-global/bin"

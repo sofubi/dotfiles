@@ -1,3 +1,4 @@
+local utils = require('utils')
 local neogit = require('neogit')
 
 neogit.setup {
@@ -5,3 +6,5 @@ neogit.setup {
     diffview = true
   }
 }
+
+utils.map('n', '<leader>g', ':Neogit<cr>')
