@@ -58,17 +58,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-local eslint = {
-  lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = {'%f:%l:%c: %m'},
-}
-
 local flake8 = {
   lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
   lintStdin = true,
-  lintFormats = '%f:%l:%c: %m'
+  lintFormats = {
+    '%f:%l:%c: %m'
+  }
 }
 
 local black = {
@@ -85,16 +80,47 @@ local mypy = {
   }
 }
 
-local languages = {
+local eslint = {
+  lintCommand = 'eslint_d --stdin --stdin-filename ${INPUT} -f unix',
+  lintStdin = true,
+  lintIgnoreExitCode = true,
+  lintFormats = {
+    '%f(%l,%c): %tarning %m',
+    '%f(%l,%c): %rror %m'
+  }
+}
+
+local prettier = {
+  formatCommand = 'prettier --find-config-path --stdin-filepath ${INPUT}',
+  formatStdin = true
+}
+
+local efm_root_markers = { 'package.json', '.git/', '.venv/' }
+local efm_languages = {
   python = { flake8, black, mypy },
-  javascript = { eslint },
-  typescript = { eslint },
+  javascript = { eslint, prettier },
+  typescript = { eslint, prettier }
 }
 
 nvim_lsp.efm.setup {
-  cmd = {'efm-langserver'},
+  cmd = {
+    "efm-langserver",
+    "-c",
+    os.getenv('HOME') .. '/.config/efm-langserver/config.yaml',
+    "-logfile",
+    '/tmp/efm.log'
+  },
   on_attach = on_attach,
   init_options = { documentFormatting = true, codeAction = true },
+  filetypes = {
+    'python',
+    'javascript'
+  },
+  root_dir = nvim_lsp.util.root_pattern(unpack(efm_root_markers)),
+  settings = {
+    root_markers = efm_root_markers,
+    languages = efm_languages
+  }
 }
 
 USER = vim.fn.expand('$USER')
