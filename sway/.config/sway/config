@@ -232,7 +232,7 @@ input "1739:0:Synaptics_TM3276-022" {
 }
 
 # swayidle
-exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f' 
+exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' timeout 601 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f' 
 
 include ~/.config/sway/theme.config
 

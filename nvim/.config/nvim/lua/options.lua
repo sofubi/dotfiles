@@ -48,6 +48,7 @@ utils.opt('o', 'scrolloff', 4)
 utils.opt('o', 'shiftround', true)
 utils.opt('o', 'wildmode', 'list:longest')
 utils.opt('o', 'autoindent', true)
+utils.opt('o', 'wrap', false)
 vim.opt.formatoptions = vim.opt.formatoptions
   - "a"
   - "t"

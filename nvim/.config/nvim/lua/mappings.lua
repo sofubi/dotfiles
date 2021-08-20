@@ -37,3 +37,9 @@ utils.map('n', ']q', ':cnext<cr>')
 -- yank to system
 utils.map('n', 'Yy', '"+yy')
 utils.map('v', 'Yy', '"+yy')
+
+-- faster resize
+utils.map('n', '<leader>+', ':exe "resize " . (winheight(0) * 1/2)<cr>')
+utils.map('n', '<leader>-', ':exe "resize " . (winheight(0) * 2/3)<cr>')
+utils.map('n', '<leader>h+', ':exe "resize " . (winwidth(0) * 3/2)<cr>')
+utils.map('n', '<leader>h-', ':exe "resize " . (winwidth(0) * 2/3)<cr>')
