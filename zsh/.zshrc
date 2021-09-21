@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+typeset -U PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -71,6 +72,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(archlinux
+         direnv
          docker
          fasd
          git
@@ -139,9 +141,11 @@ export PATH="$PATH:$HOME/.local/bin"
 export MANPAGER="nvim -c 'set ft=man' -"
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 
-export PATH="$PATH:$HOME/.emacs.d/bin"
-
 export PATH="$PATH:$HOME/.npm-global/bin"
+
+export BROWSER="firefox"
+
+export PATH="/bin:/usr/local/bin:$PATH"

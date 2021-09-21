@@ -3,7 +3,7 @@
 -- Credit: glepnir
 local lualine = require 'lualine'
 local colors = require('github-theme.colors').setup({
-  themeStyle = 'light'
+  theme_style = 'dimmed'
 })
 
 local conditions = {
@@ -162,7 +162,7 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = {fg = colors.black, gui = 'bold'}
+  color = {fg = colors.fg, gui = 'bold'}
 }
 
 -- Add components to right sections

@@ -160,7 +160,7 @@ mode $mode_opacity {
 set $mode_system "(l)ock; l(o)gout; (r)eboot; (p)oweroff; reload (c)onfig"
 bindsym $mod+Escape mode $mode_system
 mode $mode_system {
-	bindsym l exec swaylock -f
+	bindsym l exec swaylock -f, mode "default"
 	bindsym o exit
 	bindsym r exec sudo reboot, mode "default"
 	bindsym p exec sudo poweroff, mode "default"
@@ -219,8 +219,8 @@ mode $mode_notifications {
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output DP-1 pos 0 -400 res 1920x1080 transform 270
-output DP-2 pos 1080 0 res 1920x1080
+output DP-1 pos 0 0 res 1920x1080
+output DP-2 pos 1920 0 res 1920x1080
 output * background $wallpaper fill
 
 input "1739:0:Synaptics_TM3276-022" {
@@ -235,8 +235,12 @@ input "1390:306:ELECOM_TrackBall_Mouse_DEFT_Pro_TrackBall" {
     natural_scroll enabled
 }
 
+input "1133:45091:Logitech_Wireless_Mouse_MX_Master_3" {
+    natural_scroll enabled
+}
+
 # swayidle
-exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' timeout 601 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f' 
+exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' timeout 660 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f' 
 
 include ~/.config/sway/theme.config
 

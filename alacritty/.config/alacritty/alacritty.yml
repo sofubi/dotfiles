@@ -179,34 +179,34 @@
 colors:
   # Default colors
   primary:
-    background: '0xffffff'
-    foreground: '0x586069'
+    background: '0x22272e'
+    foreground: '0x768390'
 
   # Normal colors
   normal:
-    black:   '0x697179'
-    red:     '0xd03d3d'
-    green:   '0x14ce14'
-    yellow:  '0x949800'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598bc'
-    white:   '0x586069'
+    black:   '0x22272e'
+    red:     '0xff938a'
+    green:   '0x6bc46d'
+    yellow:  '0xc69026'
+    blue:    '0x6cb6ff'
+    magenta: '0xb083f0'
+    cyan:    '0x56d4dd'
+    white:   '0x768390'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xcd3131'
-    green:   '0x14ce14'
-    yellow:  '0xb5ba00'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598bc'
-    white:   '0x586069'
+    black:   '0x636e7b'
+    red:     '0xff938a'
+    green:   '0x6bc46d'
+    yellow:  '0xdaaa3f'
+    blue:    '0x6cb6ff'
+    magenta: '0xdcbdfb'
+    cyan:    '0x56d4dd'
+    white:   '0x768390'
 
   indexed_colors:
     - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xcd3131' }
+    - { index: 17, color: '0xff938a' }
 
 # Colors (Tomorrow Night)
 #colors:
@@ -390,7 +390,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.80
 
 #selection:
   # This string contains all characters that are used as separators for

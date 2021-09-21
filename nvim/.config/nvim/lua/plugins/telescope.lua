@@ -2,7 +2,10 @@ local utils = require('utils')
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {'node_modules', 'venv', 'src/*.egg-info'}
+    file_ignore_patterns = {'node_modules', 'venv', 'src/*.egg-info'},
+    layout_strategy = 'vertical',
+    scroll_strategy = 'cycle',
+    color_devicons = true,
   }
 }
 

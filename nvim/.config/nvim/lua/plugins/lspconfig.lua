@@ -93,7 +93,7 @@ local eslint = {
 }
 
 local prettier = {
-  formatCommand = 'prettier --find-config-path --stdin-filepath ${INPUT}',
+  formatCommand = 'prettier_d_slim ${INPUT}',
   formatStdin = true
 }
 
@@ -101,7 +101,8 @@ local efm_root_markers = { 'package.json', '.git/', '.venv/' }
 local efm_languages = {
   python = { flake8, black, mypy },
   javascript = { eslint, prettier },
-  typescript = { eslint, prettier }
+  typescript = { eslint, prettier },
+  ts = { eslint, prettier }
 }
 
 local efm_settings = {

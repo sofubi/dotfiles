@@ -177,8 +177,7 @@ return require('packer').startup(function(use)
     'projekt0n/github-nvim-theme',
     config = function()
       require('github-theme').setup{
-        themeStyle='light',
-        transparent=true
+        theme_style='dimmed',
       }
     end
   }
@@ -187,5 +186,12 @@ return require('packer').startup(function(use)
     'mhinz/vim-startify',
   }
 
-  use {"npxbr/glow.nvim", run = "GlowInstall"}
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+  }
+
+  use {
+    'Vimjas/vim-python-pep8-indent'
+  }
 end)
