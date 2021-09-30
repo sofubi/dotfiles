@@ -7,9 +7,10 @@ local indent = 2
 
 -- Set python and node providers
 g['python3_host_prog'] = os.getenv("HOME")..'/.virtualenvs/nvim3/bin/python'
+g['python_host_prog'] = os.getenv("HOME")..'/.pyenv/versions/nvim2/bin/python'
 
 -- colors
-g.background='light'
+g.background='dark'
 
 -- Set some options
 cmd 'syntax enable'

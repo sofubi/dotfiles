@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sofubi/.oh-my-zsh"
+export ZSH="/Users/sofubi/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,8 +70,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux
-         docker
+plugins=(docker
+         poetry
          fasd
          git
          kubectl
@@ -122,26 +122,28 @@ eval "$(fnm env)"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 eval "$(fasd --init auto)"
 
 alias luamake=/home/sofubi/.config/nvim/lua-language-server/3rd/luamake/luamake
 
 export MPD_HOST=127.0.0.1
 
-if [ -e /home/sofubi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/sofubi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export MANPAGER="nvim -c 'set ft=man' -"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
-export PATH="$PATH:$HOME/.emacs.d/bin"
-
 export PATH="$PATH:$HOME/.npm-global/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GOPATH=$HOME/go
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+eval "$(direnv hook zsh)"
+
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export JAVA_HOME="/usr/bin/java"

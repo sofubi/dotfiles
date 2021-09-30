@@ -2,9 +2,13 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'hrsh7th/nvim-compe',
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+    },
     config = function ()
-      require('plugins.compe')
+      require('plugins.completion')
     end
   }
 
@@ -24,10 +28,9 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'ggandor/lightspeed.nvim',
-    requires = 'tpope/vim-repeat',
+    'justinmk/vim-sneak',
     config = function()
-      require('plugins.lightspeed')
+      require('plugins.sneak')
     end
   }
 
@@ -73,7 +76,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'norcalli/snippets.nvim',
+    'L3MON4D3/LuaSnip',
     config = function()
       require('plugins.snippets')
     end
@@ -177,7 +180,7 @@ return require('packer').startup(function(use)
     'projekt0n/github-nvim-theme',
     config = function()
       require('github-theme').setup{
-        themeStyle='light',
+        theme_style='dimmed',
         transparent=true
       }
     end
@@ -187,5 +190,12 @@ return require('packer').startup(function(use)
     'mhinz/vim-startify',
   }
 
-  use {"npxbr/glow.nvim", run = "GlowInstall"}
+  use {
+    'Vimjas/vim-python-pep8-indent'
+  }
+
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 end)
