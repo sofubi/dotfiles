@@ -4,10 +4,10 @@ local utils = require('utils')
 utils.map('n', '<esc>', ':nohl<cr>')
 
 -- better window navigation with control
-utils.map('n', '<c-h>', ':wincmd h<cr>')
-utils.map('n', '<c-j>', ':wincmd j<cr>')
-utils.map('n', '<c-k>', ':wincmd k<cr>')
-utils.map('n', '<c-l>', ':wincmd l<cr>')
+utils.map('n', '<c-h>', '<Plug>WinMoveLeft', { noremap = false })
+utils.map('n', '<c-j>', '<Plug>WinMoveDown', { noremap = false })
+utils.map('n', '<c-k>', '<Plug>WinMoveUp', { noremap = false })
+utils.map('n', '<c-l>', '<Plug>WinMoveRight', { noremap = false })
 
 -- better tab navigation with alt
 utils.map('n', '<A-h>', ':tabp<cr>')
@@ -43,3 +43,6 @@ utils.map('n', '<leader>+', ':exe "resize " . (winheight(0) * 1/2)<cr>')
 utils.map('n', '<leader>-', ':exe "resize " . (winheight(0) * 2/3)<cr>')
 utils.map('n', '<leader>h+', ':exe "resize " . (winwidth(0) * 3/2)<cr>')
 utils.map('n', '<leader>h-', ':exe "resize " . (winwidth(0) * 2/3)<cr>')
+
+-- even faster resize
+utils.map('n', '<leader>z', '<Plug>Zoom', { noremap = false })

@@ -181,7 +181,6 @@ return require('packer').startup(function(use)
     config = function()
       require('github-theme').setup{
         theme_style='dimmed',
-        transparent=true
       }
     end
   }
@@ -192,10 +191,5 @@ return require('packer').startup(function(use)
 
   use {
     'Vimjas/vim-python-pep8-indent'
-  }
-
-  use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end
   }
 end)

@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+typeset -U PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -70,8 +71,9 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker
-         poetry
+plugins=(poetry
+         direnv
+         docker
          fasd
          git
          kubectl
@@ -142,6 +144,8 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 eval "$(direnv hook zsh)"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
