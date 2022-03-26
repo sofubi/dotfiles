@@ -9,11 +9,6 @@ utils.map('n', '<c-j>', '<Plug>WinMoveDown', { noremap = false })
 utils.map('n', '<c-k>', '<Plug>WinMoveUp', { noremap = false })
 utils.map('n', '<c-l>', '<Plug>WinMoveRight', { noremap = false })
 
--- better tab navigation with alt
-utils.map('n', '<A-h>', ':tabp<cr>')
-utils.map('n', '<A-l>', ':tabn<cr>')
-utils.map('n', '<A-c>', ':tabclose<cr>')
-
 -- easily open and escape terms
 utils.map('n', '<leader><leader>t', ':tabe term://.//zsh<cr>')
 utils.map('t', '<esc>', '<c-\\><c-n>')

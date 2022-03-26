@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'glepnir/lspsaga.nvim',
+    'tami5/lspsaga.nvim',
     config = function ()
       require('plugins.lspsaga')
     end
@@ -101,13 +101,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'simrat39/symbols-outline.nvim',
-    config = function ()
-      require('plugins.symbols_outline')
-    end
-  }
-
-  use {
     'nvim-telescope/telescope.nvim',
     requires = {
       {'nvim-lua/popup.nvim'},
@@ -123,13 +116,6 @@ return require('packer').startup(function(use)
     'akinsho/nvim-toggleterm.lua',
     config = function()
       require('plugins.toggleterm')
-    end
-  }
-
-  use {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('plugins.dap')
     end
   }
 
@@ -169,7 +155,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'kabouzeid/nvim-lspinstall',
+    'williamboman/nvim-lsp-installer',
   }
 
   use {
@@ -177,19 +163,71 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'projekt0n/github-nvim-theme',
+    'Vimjas/vim-python-pep8-indent'
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require('github-theme').setup{
-        theme_style='dimmed',
-      }
+      require('plugins.trouble')
     end
   }
 
   use {
-    'mhinz/vim-startify',
+    'stevearc/aerial.nvim',
+    config = function ()
+      require('plugins.aerial')
+    end
   }
 
   use {
-    'Vimjas/vim-python-pep8-indent'
+    'hrsh7th/cmp-path'
+  }
+
+  use {
+    'saadparwaiz1/cmp_luasnip'
+  }
+
+  use {
+    'catppuccin/nvim',
+    as = 'catpuccin',
+    config = function ()
+      require('catppuccin').setup({
+        integrations = {
+          lsp_trouble = true,
+          lsp_saga = true,
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = true,
+          },
+          neogit = true,
+          vim_sneak = true,
+          ts_rainbow = true,
+        }
+      })
+    end
+  }
+
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'},
+    config = function ()
+      require('plugins.tabline')
+    end
+  }
+
+  use {
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('plugins.dashboard')
+    end
+  }
+
+  use {
+    'mfussenegger/nvim-lint',
+    config = function()
+      require('plugins.linting')
+    end
   }
 end)

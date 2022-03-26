@@ -5,11 +5,21 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   require'lsp_signature'.on_attach()
+  require'aerial'.on_attach(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
+  buf_set_keymap("n", "<Leader>cr", "<cmd>Lspsaga rename<cr>", opts)
+  buf_set_keymap("n", "<Leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+  buf_set_keymap("x", "<Leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+  buf_set_keymap("n", "<Leader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+  buf_set_keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+  buf_set_keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  buf_set_keymap("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", {})
+  buf_set_keymap("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", {})
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -17,7 +27,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
@@ -28,13 +37,16 @@ local on_attach = function(client, bufnr)
   end
 
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-    ]], false)
+      vim.cmd [[
+        hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+        hi! LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+        hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+        augroup lsp_document_highlight
+          autocmd! * <buffer>
+          autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+      ]]
   end
 end
 
@@ -60,72 +72,6 @@ local lua_settings = {
   }
 }
 
-local flake8 = {
-  lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
-  lintStdin = true,
-  lintFormats = {
-    '%f:%l:%c: %m'
-  }
-}
-
-local black = {
-  formatCommand = 'black --quiet -',
-  formatStdin = true
-}
-
-local mypy = {
-  lintCommand = 'mypy --show-column-numbers',
-  lintFormats = {
-    '%f:%l:%c: %trror: %m',
-    '%f:%l:%c: %tarning: %m',
-    '%f:%l:%c: %tote: %m',
-  }
-}
-
-local eslint = {
-  lintCommand = 'eslint_d --stdin --stdin-filename ${INPUT} -f unix',
-  lintStdin = true,
-  lintIgnoreExitCode = true,
-  lintFormats = {
-    '%f(%l,%c): %tarning %m',
-    '%f(%l,%c): %rror %m'
-  }
-}
-
-local prettier = {
-  formatCommand = 'prettier_d_slim ${INPUT}',
-  formatStdin = true
-}
-
-local efm_root_markers = { 'package.json', '.git/', '.venv/' }
-local efm_languages = {
-  python = { flake8, black, mypy },
-  javascript = { eslint, prettier },
-  typescript = { eslint, prettier },
-  ts = { eslint, prettier }
-}
-
-local efm_settings = {
-  on_attach = on_attach,
-  cmd = {
-    "efm-langserver",
-    "-c",
-    os.getenv('HOME') .. '/.config/efm-langserver/config.yaml',
-    "-logfile",
-    '/tmp/efm.log'
-  },
-  init_options = { documentFormatting = true, codeAction = true },
-  filetypes = {
-    'python',
-    'javascript'
-  },
-  root_dir = nvim_lsp.util.root_pattern(unpack(efm_root_markers)),
-  settings = {
-    root_markers = efm_root_markers,
-    languages = efm_languages
-  }
-}
-
 local function make_config()
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -142,28 +88,39 @@ local function make_config()
   }
 end
 
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
+local lsp_installer = require 'nvim-lsp-installer'
+local servers = {
+  "bashls",
+  "clangd",
+  "dockerls",
+  "jsonls",
+  "tsserver",
+  "sumneko_lua",
+  "remark_ls",
+  "pyright",
+  "sqlls",
+  "taplo",
+  "terraformls",
+  "yamlls",
+  "rust_analyzer",
+}
 
-local function setup_servers()
-  for _, lsp in pairs(servers) do
-    local config = make_config()
+for _, name in pairs(servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found then
+    local opts = make_config()
 
-    if lsp == 'lua' then
-      config.settings = lua_settings
+    if not server:is_installed() then
+      print("Installing " .. name)
+      server:install()
     end
 
-    if lsp == 'efm' then
-      config = vim.tbl_extend('force', config, efm_settings)
+    if name == 'sumneko_lua' then
+      opts.settings = lua_settings
     end
 
-    nvim_lsp[lsp].setup(config)
+    if server:is_installed() then
+      server:setup(opts)
+    end
   end
-end
-
-setup_servers()
-
-require'lspinstall'.post_install_hook = function()
-  setup_servers()
-  vim.cmd('bufdo e')
 end

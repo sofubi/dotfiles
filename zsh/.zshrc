@@ -80,7 +80,8 @@ plugins=(poetry
          sudo
          vi-mode
          virtualenvwrapper
-         zsh_reload
+         aws
+         terraform
          zsh-autosuggestions 
          zsh-syntax-highlighting)
 
@@ -133,8 +134,6 @@ export MPD_HOST=127.0.0.1
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.local/bin"
 
-export MANPAGER="nvim -c 'set ft=man' -"
-
 export PATH="$PATH:$HOME/.npm-global/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -144,6 +143,8 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 eval "$(direnv hook zsh)"
 
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
@@ -151,3 +152,10 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export JAVA_HOME="/usr/bin/java"
+
+export PATH="$PATH:$HOME/.emacs.d/bin"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
+
+eval "$(register-python-argcomplete zappa)"

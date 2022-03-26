@@ -11,6 +11,7 @@ g['python_host_prog'] = os.getenv("HOME")..'/.pyenv/versions/nvim2/bin/python'
 
 -- colors
 g.background='dark'
+cmd[[colorscheme catppuccin]]
 
 -- Set some options
 cmd 'syntax enable'
