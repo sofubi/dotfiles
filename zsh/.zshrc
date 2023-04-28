@@ -1,49 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 typeset -U PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/sofubi/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Disable auto changing title
+export DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+export UPDATE_ZSH_DAYS=3
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
@@ -71,28 +43,19 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(poetry
-         direnv
-         docker
+plugins=(git
+         gh
          fasd
-         git
-         kubectl
-         sudo
          vi-mode
          virtualenvwrapper
-         aws
-         terraform
-         zsh-autosuggestions 
+         zsh-autosuggestions
          zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+source ~/.aliases
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -112,9 +75,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f ~/.config/shell/aliasrc ]; then
-  . ~/.config/shell/aliasrc
-fi
 
 # Load Starship
 eval "$(starship init zsh)"
@@ -122,40 +82,20 @@ eval "$(starship init zsh)"
 # fnm
 eval "$(fnm env)"
 
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
-
-eval "$(fasd --init auto)"
-
-alias luamake=/home/sofubi/.config/nvim/lua-language-server/3rd/luamake/luamake
-
-export MPD_HOST=127.0.0.1
-
-export PATH="$PATH:$HOME/.bin"
-export PATH="$PATH:$HOME/.local/bin"
-
-export PATH="$PATH:$HOME/.npm-global/bin"
-
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf_opts.sh
 
-export GOPATH=$HOME/go
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
-eval "$(direnv hook zsh)"
-
-export PATH="$PATH:$HOME/Library/Python/3.9/bin"
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$PYENV_ROOT/bin"
+# Pyenv
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export JAVA_HOME="/usr/bin/java"
+# Homebrew git
+export HOMEBREW_GITHUB_API_TOKEN=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
 
-export PATH="$PATH:$HOME/.emacs.d/bin"
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+# autoenv
+source /opt/homebrew/opt/autoenv/activate.sh
 
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
-
-eval "$(register-python-argcomplete zappa)"
+# bat
+export BAT_THEME="Catppuccin-latte"

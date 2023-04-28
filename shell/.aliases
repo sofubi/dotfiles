@@ -1,0 +1,19 @@
+# vim: ft=sh
+
+alias vi=nvim
+alias vim=nvim
+alias ls='lsd'
+alias lt='ls --tree'
+alias tree='ls --tree'
+
+alias envmake='python -m venv .venv/'
+envon() {
+	source "${1:-.venv}/bin/activate"
+}
+alias envoff=deactivate
+
+alias portfd="lsof -iTCP -sTCP:LISTEN -P -n | grep -i"
+
+function gi() { curl -sLw \"\\\n\" https://www.toptal.com/developers/gitignore/api/$@; }
+
+alias tt="todo.sh"

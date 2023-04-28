@@ -1,8 +1,0 @@
-background-color=#fafafa
-text-color=#333333
-border-color=#4078c0
-progress-color=source #6cc644
-default-timeout=5000
-
-[mode=do-not-disturb]
-invisible=1

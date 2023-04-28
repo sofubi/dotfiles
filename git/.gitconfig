@@ -1,5 +1,7 @@
+# This is Git's per-user configuration file.
 [user]
-	name = sofubi
-	email = thomaslawton91@gmail.com
-[pull]
-	rebase = false
+# Please adapt and uncomment the following lines:
+	name = Thomas Lawton
+	email = thomas.lawton@ratmail.cc
+[init]
+	defaultBranch = main
