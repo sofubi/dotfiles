@@ -6,11 +6,34 @@ alias ls='lsd'
 alias lt='ls --tree'
 alias tree='ls --tree'
 
-alias envmake='python -m venv .venv/'
-envon() {
-	source "${1:-.venv}/bin/activate"
+pv() {
+	case $1 in
+	down)
+		echo "Deactivating..."
+		source deactivate
+		;;
+
+	clean)
+		if [ -d "venv/" ]; then
+			rm -rf venv/
+		else
+			echo "Nothing to clean..."
+		fi
+		;;
+
+	up)
+		echo "Creating and activating..."
+		current_path=$(dirname $0)
+		current_dir=${current_path##*/.*}
+		if [ ! -d "venv/" ]; then
+			python -m venv --upgrade-deps --prompt $current_dir venv
+		fi
+		source venv/bin/activate
+		;;
+
+	*) echo "Not a recognized option..." ;;
+	esac
 }
-alias envoff=deactivate
 
 alias portfd="lsof -iTCP -sTCP:LISTEN -P -n | grep -i"
 

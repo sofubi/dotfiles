@@ -13,7 +13,7 @@ return {
           nls.builtins.formatting.black,
           nls.builtins.diagnostics.ruff,
           nls.builtins.diagnostics.mypy.with({
-            prefer_local = "./venv/bin",
+            prefer_local = "venv/bin",
           }),
         },
       }

@@ -3,5 +3,13 @@
 # Please adapt and uncomment the following lines:
 	name = Thomas Lawton
 	email = thomas.lawton@ratmail.cc
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA7oSabruGAppShZpdTIn67i2B9XIiIrRV3s1x8c7zeN
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/sofubi/.ssh/allowed_signers
+[commit]
+	gpgsign = true

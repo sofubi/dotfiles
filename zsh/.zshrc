@@ -51,6 +51,9 @@ plugins=(git
          zsh-autosuggestions
          zsh-syntax-highlighting)
 
+# brew completions
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -90,9 +93,6 @@ source ~/.fzf_opts.sh
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# Homebrew git
-export HOMEBREW_GITHUB_API_TOKEN=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
 
 # autoenv
 source /opt/homebrew/opt/autoenv/activate.sh
