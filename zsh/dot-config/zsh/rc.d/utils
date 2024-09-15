@@ -1,0 +1,28 @@
+# vim: set ft=zsh:
+
+# Enable z command.
+if type zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+# Enable fzf zsh integration.
+if type fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
+
+# Pyenv
+if type pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# fnm
+if type fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd)"
+fi
+
+# Rust
+. "$HOME/.cargo/env"
+
+# Rye
+. "$HOME/.rye/env"

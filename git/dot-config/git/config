@@ -1,0 +1,51 @@
+[branch]
+  sort = -committerdate
+[commit]
+	gpgsign = true
+  verbose = true
+[core]
+  editor = nvim
+  excludesfile = ~/.config/git/global-ignore
+  pager = delta
+[credential]
+  helper = osxkeychain
+[delta]
+  features = decorations
+  hyperlinks = true
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[diff]
+  algorithm = histogram
+  colorMoved = default
+  context = 10
+[fetch]
+  prune = true
+  prunetags = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = ~/.ssh/allowed_signers
+[init]
+	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[log]
+  date = iso
+[merge]
+  conflictstyle = diff3
+  keepbackup = false
+[rebase]
+  missingCommitsCheck = error
+  updateRefs = true
+  autosquash = true
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "gh:"
+[user]
+	name = Thomas Lawton
+	email = thomas.lawton@ratmail.cc
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA7oSabruGAppShZpdTIn67i2B9XIiIrRV3s1x8c7zeN

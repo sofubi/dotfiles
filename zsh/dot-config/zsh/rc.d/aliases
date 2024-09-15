@@ -1,0 +1,22 @@
+# vim: set ft=zsh :
+
+alias ls='lsd'
+alias lt='lsd --tree'
+alias tree='lsd --tree'
+alias l='ls -F'
+alias ll='ls -lh'
+alias la='ls -lah'
+alias ldot='ls -ld .*'
+
+alias d='dirs -v'
+
+alias v=vi
+alias vi=vim
+alias vim=nvim
+
+alias portfd="lsof -iTCP -sTCP:LISTEN -P -n | grep -i"
+
+alias cm='chezmoi'
+
+# python
+alias pvd='pyenv deactivate'

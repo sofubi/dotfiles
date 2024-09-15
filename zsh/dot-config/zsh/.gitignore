@@ -1,0 +1,6 @@
+.zsh_sessions
+.zcompdump
+.zhistory
+.zsh_history
+.zshrc.bak
+zplugins.zsh

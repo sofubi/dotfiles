@@ -1,0 +1,25 @@
+# vim: set ft=zsh :
+
+# git
+function gi { curl -sLw \"\\\n\" https://www.toptal.com/developers/gitignore/api/$@; }
+
+# python
+function pvc {
+  if [[ "$1" -eq "local" ]]; then
+    mkdir -p venvs
+    python -m venv --upgrade-deps venvs/dev
+  else
+    pyenv virtualenv --upgrade-deps $1
+  fi
+}
+
+### FZF
+
+# python
+function pva {
+  if [[ "$1" -eq "local" ]]; then
+    source "$(fd . -t d venvs | fzf 2>/dev/null)/bin/activate"
+  else
+    pyenv activate $(pyenv virtualenvs --bare | fzf 2>/dev/null)
+  fi
+}
