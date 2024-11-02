@@ -1,12 +1,3 @@
-[submodule ".dotfiles/.yadm-source"]
-	path = .dotfiles/.yadm-source
-	url = git@github.com:yadm-dev/yadm.git
-[submodule ".dotfiles/.config/nvim"]
-	path = .dotfiles/.config/nvim
-	url = git@github.com:sofubi/kickstart.nvim
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:sofubi/kickstart.nvim
-[submodule ".yadm-repo"]
-	path = .yadm-repo
-	url = git@github.com:yadm-dev/yadm.git
