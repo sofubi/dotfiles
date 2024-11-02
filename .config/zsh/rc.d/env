@@ -1,0 +1,34 @@
+# vim: set ft=zsh:
+
+# Set locale.
+export LANG="${LANG:-en_US.UTF-8}"
+export TZ="${TZ:-America/New_York}"
+
+# Set preferred editors, pagers, and launchers.
+export EDITOR="${EDITOR:-nvim}"
+export VISUAL="${VISUAL:-nvim}"
+export PAGER="${PAGER:-bat}"
+export BROWSER="${BROWSER:-open}"
+
+# Reduce key delay.
+export KEYTIMEOUT="${KEYTIMEOUT:-1}"
+
+# ZSH
+export ZFUNCDIR="$ZDOTDIR/functions"
+
+# 1Password SSH
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# FZF
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
+# IPython
+export IPYTHONDIR="$HOME/.config/ipython"
