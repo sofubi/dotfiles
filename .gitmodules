@@ -1,0 +1,3 @@
+[submodule "/Users/sofubi/.config/nvim"]
+	path = /Users/sofubi/.config/nvim
+	url = git@github.com:sofubi/kickstart.nvim
