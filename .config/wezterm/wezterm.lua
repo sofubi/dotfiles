@@ -14,29 +14,12 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-local function background(scheme)
-	return {
-		{
-			source = { File = "/Users/sofubi/.config/wezterm/backgrounds/giants_causeway.jpg" },
-			horizontal_align = "Center",
-			height = "Contain",
-		},
-		{
-			source = { Color = wezterm.get_builtin_color_schemes()[scheme].background },
-			height = "100%",
-			width = "100%",
-			opacity = 0.93,
-		},
-	}
-end
-
 wezterm.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	local appearance = window:get_appearance()
 	local scheme = scheme_for_appearance(appearance)
 	if overrides.color_scheme ~= scheme then
 		overrides.color_scheme = scheme
-		overrides.background = background(scheme)
 		window:set_config_overrides(overrides)
 	end
 end)
