@@ -1,7 +1,7 @@
 [branch]
   sort = -committerdate
 [commit]
-	gpgsign = true
+  gpgsign = true
   verbose = true
 [core]
   editor = nvim
@@ -10,11 +10,27 @@
 [credential]
   helper = osxkeychain
 [delta]
-  features = decorations
+  dark = true
+  features = unobtrusive-line-numbers decorations
   hyperlinks = true
   line-numbers = true
   navigate = true
-  side-by-side = true
+  syntax-theme = zenburn
+  whitespace-error-style = 22 reverse
+[delta "unobtrusive-line-numbers"]
+  line-numbers = true
+  line-numbers-minus-style = "#444444"
+  line-numbers-zero-style = "#444444"
+  line-numbers-plus-style = "#444444"
+  line-numbers-left-format = "{nm:>4}┊"
+  line-numbers-right-format = "{np:>4}│"
+  line-numbers-left-style = blue
+  line-numbers-right-style = blue
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
 [delta "interactive"]
   keep-plus-minus-markers = false
 [diff]
@@ -25,27 +41,27 @@
   prune = true
   prunetags = true
 [gpg]
-	format = ssh
+  format = ssh
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = ~/.ssh/allowed_signers
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+  allowedSignersFile = ~/.ssh/allowed_signers
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [log]
   date = iso
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   keepbackup = false
 [rebase]
   missingCommitsCheck = error
   updateRefs = true
   autosquash = true
 [url "git@github.com:"]
-	pushInsteadOf = "https://github.com/"
-	pushInsteadOf = "gh:"
+  pushInsteadOf = "https://github.com/"
+  pushInsteadOf = "gh:"
 [user]
-	name = Thomas Lawton
-	email = thomas.lawton@ratmail.cc
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA7oSabruGAppShZpdTIn67i2B9XIiIrRV3s1x8c7zeN
+  name = Thomas Lawton
+  email = thomas.lawton@ratmail.cc
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA7oSabruGAppShZpdTIn67i2B9XIiIrRV3s1x8c7zeN

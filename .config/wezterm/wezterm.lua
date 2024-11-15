@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Appearance
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
 config.font_size = 13
 
 local function scheme_for_appearance(appearance)
@@ -49,6 +49,7 @@ config.inactive_pane_hsb = {
 
 -- Tabs
 config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 
 -- Keys
 config.send_composed_key_when_left_alt_is_pressed = false
@@ -105,5 +106,7 @@ config.keys = {
 		action = wezterm.action.TogglePaneZoomState,
 	},
 }
+
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 return config

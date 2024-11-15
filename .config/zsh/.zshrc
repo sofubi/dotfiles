@@ -2,3 +2,4 @@
 
 # zsh setup
 . $ZDOTDIR/rc.d/bootstrap
+. "$HOME/.cargo/env"
