@@ -1,6 +1,15 @@
+tap "cormacrelf/tap"
+tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "joshmedeski/sesh"
+tap "koekeishiya/formulae"
+tap "metafates/mangal"
 tap "mongodb/brew"
+tap "osx-cross/arm"
+tap "osx-cross/avr"
+tap "qmk/qmk"
+tap "railwaycat/emacsmacport"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Cryptography and SSL/TLS Toolkit
@@ -111,6 +120,8 @@ brew "pyenv"
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Multi-purpose tool for manipulating and analyzing WAV files
+brew "shntool"
 # TOML toolkit written in Rust
 brew "taplo"
 # Official documentation format of the GNU project
@@ -135,22 +146,39 @@ brew "wget"
 brew "yadm"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Archive manager for data compression and backups
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Automatic tiling window manager similar to xmonad
 cask "amethyst"
+# Online gaming platform
 cask "battle-net"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker"
+# Launcher for *Epic Games* games
 cask "epic-games"
+# Web browser
 cask "firefox"
+# Free and open-source image editor
 cask "gimp"
+# Web browser
 cask "google-chrome"
+# Neovim Client
+cask "neovide"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Archive manager for data compression and backups
 cask "rar"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Instant messaging application focusing on security
 cask "signal"
+# Team communication and collaboration software
 cask "slack"
+# Open-source BitTorrent client
 cask "transmission"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Video communication and virtual meeting platform
 cask "zoom"
