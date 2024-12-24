@@ -8,6 +8,7 @@ source $ZDOTDIR/rc.d/path
 
 ## Env
 source $ZDOTDIR/rc.d/env
+source $ZDOTDIR/rc.d/secrets
 
 ## Hist
 source $ZDOTDIR/rc.d/history
