@@ -1,10 +1,10 @@
 # vim: set ft=zsh:
 
 # dedupe path
-typeset -gU cdpath fpath mailpath path
+typeset -U fpath path
 
 # ZSH site functions for mac (not using brew)
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 
 # common dirs
 path=(
@@ -26,7 +26,7 @@ fi
 path=(
   "$HOME/bin"
   "$HOME/.local/bin"
-  "${path[@]}"
+  $path
 )
 
 # Tool paths

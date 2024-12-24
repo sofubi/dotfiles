@@ -23,6 +23,3 @@ fi
 
 # Rust
 . "$HOME/.cargo/env"
-
-# Rye
-. "$HOME/.rye/env"

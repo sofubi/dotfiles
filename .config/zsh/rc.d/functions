@@ -23,3 +23,8 @@ function pva {
     pyenv activate $(pyenv virtualenvs --bare | fzf 2>/dev/null)
   fi
 }
+
+# dotfiles
+function dots {
+  yadm list --files -a | fzf --preview 'bat $HOME/{-1}' --bind 'enter:become(nvim)'
+}

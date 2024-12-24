@@ -50,6 +50,8 @@ brew "fd"
 brew "flac"
 # Fast and simple Node.js version manager
 brew "fnm"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -78,10 +80,16 @@ brew "grep"
 brew "imagemagick"
 # Tool to measure maximum TCP and UDP bandwidth
 brew "iperf"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
 # Simple terminal UI for git commands
 brew "lazygit"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
+# GNOME XML library
+brew "libxml2"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Powerful, lightweight programming language (v5.1.5)
@@ -108,10 +116,10 @@ brew "pillow"
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Paste PNG into files
+brew "pngpaste"
 # Object-relational database system
-brew "postgresql@14", restart_service: true
-# Object-relational database system
-brew "postgresql@16"
+brew "postgresql@14"
 # Pretty, minimal and fast ZSH prompt
 brew "pure"
 # Python version management
@@ -122,6 +130,8 @@ brew "ripgrep"
 brew "shellcheck"
 # Multi-purpose tool for manipulating and analyzing WAV files
 brew "shntool"
+# Cross-shell prompt for astronauts
+brew "starship"
 # TOML toolkit written in Rust
 brew "taplo"
 # Official documentation format of the GNU project
@@ -132,6 +142,8 @@ brew "tig"
 brew "tmux"
 # Maintained ctags implementation
 brew "universal-ctags"
+# Collection of Linux utilities
+brew "util-linux"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Tool for creating isolated virtual python environments
@@ -146,6 +158,8 @@ brew "wget"
 brew "yadm"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-modern-doom3-icon", "with-native-comp"]
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Automatic tiling window manager similar to xmonad
@@ -168,6 +182,8 @@ cask "google-chrome"
 cask "neovide"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Administration and development platform for PostgreSQL
+cask "pgadmin4"
 # Archive manager for data compression and backups
 cask "rar"
 # Control your tools with a few keystrokes
@@ -176,6 +192,8 @@ cask "raycast"
 cask "signal"
 # Team communication and collaboration software
 cask "slack"
+# Mesh VPN based on WireGuard
+cask "tailscale"
 # Open-source BitTorrent client
 cask "transmission"
 # GPU-accelerated cross-platform terminal emulator and multiplexer

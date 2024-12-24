@@ -11,6 +11,3 @@ setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 
 # zstyles
 [[ -r ${ZDOTDIR:-$HOME}/.zstyle ]] && . ${ZDOTDIR:-$HOME}/.zstyle
-
-# Wezterm integration
-. "$ZDOTDIR/wezterm.sh"

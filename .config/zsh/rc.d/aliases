@@ -1,5 +1,6 @@
 # vim: set ft=zsh :
 
+# lsd
 alias ls='lsd'
 alias lt='lsd --tree'
 alias tree='lsd --tree'
@@ -8,15 +9,19 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias ldot='ls -ld .*'
 
+# with opts
 alias d='dirs -v'
 
+# nvim
 alias v=vi
 alias vi=vim
 alias vim=nvim
 
+# helpers
 alias portfd="lsof -iTCP -sTCP:LISTEN -P -n | grep -i"
-
-alias cm='chezmoi'
 
 # python
 alias pvd='pyenv deactivate'
+
+# zsh
+alias srz='source $ZDOTDIR/.zshrc'
