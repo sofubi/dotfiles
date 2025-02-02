@@ -1,5 +1,5 @@
 [branch]
-  sort = -committerdate
+	sort = -committerdate
 [commit]
   gpgsign = true
   verbose = true
@@ -7,6 +7,8 @@
   editor = nvim
   excludesfile = ~/.config/git/global-ignore
   pager = delta
+	untrackedcache = true
+	fsmonitor = true
 [credential]
   helper = osxkeychain
 [delta]
@@ -40,6 +42,7 @@
 [fetch]
   prune = true
   prunetags = true
+	writeCommitGraph = true
 [gpg]
   format = ssh
 [gpg "ssh"]
@@ -65,3 +68,9 @@
   name = Thomas Lawton
   email = thomas.lawton@ratmail.cc
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA7oSabruGAppShZpdTIn67i2B9XIiIrRV3s1x8c7zeN
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[maintenance]
+	repo = /Users/sofubi/Code/Personal/dumpster
